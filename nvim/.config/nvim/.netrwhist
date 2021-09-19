@@ -1,2 +1,12 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =2
+let g:netrw_dirhistcnt =7
+let g:netrw_dirhist_7='/home/guigallo'
+let g:netrw_dirhist_6='/home/guigallo/personal/dotfiles/.git'
+let g:netrw_dirhist_5='/home/guigallo/personal/dotfiles'
+let g:netrw_dirhist_4='/home/guigallo'
+let g:netrw_dirhist_3='/home/guigallo/personal/dotfiles'
+let g:netrw_dirhist_2='/home/guigallo/.config/nvim'
+let g:netrw_dirhist_1='/home/guigallo/personal/dotfiles'
+let g:netrw_dirhist_0='/home/guigallo/.config/xfce4/xfconf/xfce-perchannel-xml'
+let g:netrw_dirhist_9='/mnt/c/Users/guilh'
+let g:netrw_dirhist_8='/etc'

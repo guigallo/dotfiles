@@ -15,7 +15,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -84,7 +84,6 @@ plugins=(
 )
 
 source $ZSH/oh-my-zsh.sh
-source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 
 # User configuration
 
@@ -128,14 +127,10 @@ alias l='ls -CF'
 
 export EDITOR='nvim'
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
 # locale
 #setxkbmap -model
 
 # git
-alias dotfiles='/usr/bin/git --git-dir=$HOME/git/dotfiles/ --work-tree=$HOME'
 export GITHUB_TOKEN=""
 alias gitlogin='eval "$(ssh-agent -s)" && ssh-add ~/.ssh/github_id_ed25519'
 
@@ -144,13 +139,5 @@ function killbyport() {
   kill $(lsof -t -i:$1)
 }
 
-# .dotfiles stow
-if [[ -z $STOW_FOLDERS ]]; then
-	STOW_FOLDERS="bash,dunst,git,i3,npm,nvim,ranger,rofi,Xresources,zsh"
-fi
-
-if [[ -z $DOTFILES ]]; then
-    DOTFILES=$HOME/.dotfiles
-fi
-
-STOW_FOLDERS=$STOW_FOLDERS DOTFILES=$DOTFILES $DOTFILES/install
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
