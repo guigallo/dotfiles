@@ -137,7 +137,7 @@ export EDITOR='nvim'
 # git
 alias dotfiles='/usr/bin/git --git-dir=$HOME/git/dotfiles/ --work-tree=$HOME'
 export GITHUB_TOKEN=""
-alias gitlogin='eval "$(ssh-agent -s)" && ssh-add ~/.ssh/github_id_d25519e'
+alias gitlogin='eval "$(ssh-agent -s)" && ssh-add ~/.ssh/github_id_ed25519'
 
 # helpers
 function killbyport() {
