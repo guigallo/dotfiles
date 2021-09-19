@@ -139,6 +139,12 @@ alias dotfiles='/usr/bin/git --git-dir=$HOME/git/dotfiles/ --work-tree=$HOME'
 export GITHUB_TOKEN=""
 alias gitlogin='eval "$(ssh-agent -s)" && ssh-add ~/.ssh/github_id_d25519e'
 
+# helpers
+function killbyport() {
+  kill $(lsof -t -i:$1)
+}
+
+# .dotfiles stow
 if [[ -z $STOW_FOLDERS ]]; then
 	STOW_FOLDERS="bash,dunst,git,i3,npm,nvim,ranger,rofi,Xresources,zsh"
 fi
