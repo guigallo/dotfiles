@@ -34,6 +34,8 @@ set nowritebackup
 set shortmess+=c
 
 call plug#begin('~/.vim/plugged')
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'morhetz/gruvbox'
 Plug 'itchyny/lightline.vim'
@@ -75,6 +77,9 @@ let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist)|(\.(swp|ico|git|svn))$'
 nnoremap <C-b> :CtrlPBuffer<cr>
 imap jk <Esc>
+
+" javascript
+let g:javascript_plugin_jsdoc = 1
 
 " fugitive
 nmap <leader>gf :diffget //2<CR>
