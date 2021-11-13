@@ -113,7 +113,7 @@ function! s:on_lsp_buffer_enabled() abort
   inoremap <buffer> <expr><c-d> lsp#scroll(-4)
 
   let g:lsp_format_sync_timeout = 1000
-  autocmd! BufWritePre *.rs,*.go call execute('LspDocumentFormatSync')
+  autocmd! BufWritePre *.js,*.scss call execute('LspDocumentFormatSync')
 endfunction
 
 augroup lsp_install
@@ -145,4 +145,5 @@ augroup GUIGALLO
   autocmd!
   autocmd BufWritePre * :call TrimWhitespace()
   autocmd FileType javascript setlocal foldmethod=syntax
+  au FileType css,scss let b:prettier_exec_cmd = "prettier-stylelint"
 augroup END
