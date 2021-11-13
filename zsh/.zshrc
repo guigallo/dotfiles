@@ -134,6 +134,12 @@ export EDITOR='nvim'
 export GITHUB_TOKEN=""
 alias gitlogin='eval "$(ssh-agent -s)" && ssh-add ~/.ssh/github_id_ed25519'
 
+# java
+export JAVA_HOME=$(readlink -f /usr/bin/javac | sed "s:/bin/javac::")
+
+# dev
+export PATH="$PATH:$(yarn global bin)"
+
 # helpers
 function killbyport() {
   kill $(lsof -t -i:$1)
