@@ -85,6 +85,10 @@ let g:javascript_plugin_jsdoc = 1
 nmap <leader>gf :diffget //2<CR>
 nmap <leader>gj :diffget //3<CR>
 
+" gitgutter
+nmap [h <Plug>(GitGutterPrevHunk)
+nmap ]h <Plug>(GitGutterNextHunk)
+
 " lsp
 if executable('typescript-language-server')
   au User lsp_setup call lsp#register_server({

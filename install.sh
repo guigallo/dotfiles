@@ -17,3 +17,4 @@ done
 popd
 
 source ~/.zsh
+sudo pacman -S the_silver_searcher

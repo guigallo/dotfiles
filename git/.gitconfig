@@ -5,3 +5,5 @@
 	name = guigallo
 [code]
 	editor = nvim
+[pull]
+	rebase = true
