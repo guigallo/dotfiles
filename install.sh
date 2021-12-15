@@ -1,7 +1,8 @@
 #!/bin/zsh
 
 if [[ -z $STOW_FOLDERS ]]; then
-  STOW_FOLDERS="bash,dunst,git,i3,npm,nvim,ranger,rofi,Xresources,zsh"
+  #STOW_FOLDERS="bash,dunst,git,i3,npm,nvim,ranger,rofi,Xresources,zsh,tmux"
+  STOW_FOLDERS="tmux"
 fi
 
 if [[ -z $DOTFILES ]]; then
@@ -16,5 +17,4 @@ do
 done
 popd
 
-source ~/.zsh
-sudo pacman -S the_silver_searcher
+source ~/.zshrc

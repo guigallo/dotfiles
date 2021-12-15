@@ -1,5 +1,5 @@
 # dependencies
-sudo pacman -Sy fzf stow python3
+sudo pacman -Sy fzf stow python3 the_silver_searcher
 
 # nodeenv
 yay -Sy nvm
