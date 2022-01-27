@@ -32,43 +32,61 @@ set wildignore=*/node_modules/*,*/.next/*
 set nobackup
 set nowritebackup
 set shortmess+=c
+set encoding=UTF-8
 
 call plug#begin('~/.vim/plugged')
+Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'prabirshrestha/vim-lsp'
-Plug 'morhetz/gruvbox'
 Plug 'itchyny/lightline.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'kien/ctrlp.vim'
 Plug 'tpope/vim-fugitive'
-Plug 'sheerun/vim-polyglot'
+" Plug 'sheerun/vim-polyglot'
 Plug 'rstacruz/vim-closer'
-Plug 'pangloss/vim-javascript'
 Plug 'prettier/vim-prettier', {
   \ 'do': 'yarn install',
   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
 Plug 'stylelint/stylelint'
+
+Plug 'pangloss/vim-javascript'
+Plug 'prabirshrestha/vim-lsp'
+Plug 'mattn/vim-lsp-settings'
 Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'runoshun/tscompletejob'
 Plug 'prabirshrestha/asyncomplete-tscompletejob.vim'
+
+Plug 'ryanoasis/vim-devicons'
 
 call plug#end()
 
 " themes
-colorscheme gruvbox
+set guifont=FiraCode\ Nerd\ Font\ 11
+colorscheme dracula
 highlight Normal guibg=NONE ctermbg=NONE
-" highlight ColorColumn guibg=#282a36
+let g:webdevicons_enable = 1
+let g:webdevicons_enable_ctrlp = 1
 let g:lightline = {
-  \ 'colorscheme': 'gruvbox',
+  \ 'colorscheme': 'dracula',
   \ 'active': {
   \   'left': [ ['mode', 'paste'],
   \             ['gitbranch', 'readyonly', 'filename', 'modified'] ]
   \ },
   \ 'component_function': {
-  \   'gitbranch': 'FugitiveHead'
+  \   'gitbranch': 'FugitiveHead',
+  \   'filetype': 'FormatFileType',
+  \   'fileformat': 'FormatFile',
   \ }
   \ }
+
+function! FormatFileType()
+  return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : 'no ft') : ''
+endfunction
+
+function! FormatFile()
+  return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbol()) : ''
+endfunction
 
 " maps
 let mapleader = " "
@@ -95,7 +113,7 @@ if executable('typescript-language-server')
     \ 'name': 'javascript support using typescript-language-server',
     \ 'cmd': { server_info->[&shell, &shellcmdflag, 'typescript-language-server --stdio']},
     \ 'root_uri': { server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_directory(lsp#utils#get_buffer_path(), '.git/..'))},
-    \ 'whitelist': ['javascript', 'javascript.jsx', 'javascriptreact']
+    \ 'whitelist': ['typescript', 'javascript', 'javascript.jsx', 'javascriptreact']
     \ })
 endif
 
@@ -117,7 +135,7 @@ function! s:on_lsp_buffer_enabled() abort
   inoremap <buffer> <expr><c-d> lsp#scroll(-4)
 
   let g:lsp_format_sync_timeout = 1000
-  autocmd! BufWritePre *.js,*.scss call execute('LspDocumentFormatSync')
+  autocmd! BufWritePre *.ts,*.js,*.scss call execute('LspDocumentFormatSync')
 endfunction
 
 augroup lsp_install
@@ -148,6 +166,6 @@ endfun
 augroup GUIGALLO
   autocmd!
   autocmd BufWritePre * :call TrimWhitespace()
-  autocmd FileType javascript setlocal foldmethod=syntax
+  autocmd FileType javascript,typescript setlocal foldmethod=syntax
   au FileType css,scss let b:prettier_exec_cmd = "prettier-stylelint"
 augroup END
