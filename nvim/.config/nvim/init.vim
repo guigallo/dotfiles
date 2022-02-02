@@ -42,7 +42,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'kien/ctrlp.vim'
 Plug 'tpope/vim-fugitive'
-" Plug 'sheerun/vim-polyglot'
+Plug 'sheerun/vim-polyglot'
 Plug 'rstacruz/vim-closer'
 Plug 'prettier/vim-prettier', {
   \ 'do': 'yarn install',
