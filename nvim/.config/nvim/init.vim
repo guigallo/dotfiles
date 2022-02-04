@@ -58,10 +58,13 @@ Plug 'runoshun/tscompletejob'
 Plug 'prabirshrestha/asyncomplete-tscompletejob.vim'
 
 Plug 'ryanoasis/vim-devicons'
+Plug 'chrisbra/colorizer'
 
 call plug#end()
 
 " themes
+let g:colorizer_auto_color = 1
+let g:colorizer_auto_filetype='css,html,scss,js'
 set guifont=FiraCode\ Nerd\ Font\ 11
 colorscheme dracula
 highlight Normal guibg=NONE ctermbg=NONE
@@ -167,5 +170,9 @@ augroup GUIGALLO
   autocmd!
   autocmd BufWritePre * :call TrimWhitespace()
   autocmd FileType javascript,typescript setlocal foldmethod=syntax
+  autocmd
+    \ BufNewFile,BufRead,BufEnter,BufLeave,WinEnter,WinLeave,WinNew
+    \ *.css,*.scss,*.js
+    \ ColorHighlight
   au FileType css,scss let b:prettier_exec_cmd = "prettier-stylelint"
 augroup END
