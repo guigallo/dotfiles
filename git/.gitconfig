@@ -7,3 +7,5 @@
 	editor = nvim
 [pull]
 	rebase = true
+[alias]
+	root = rev-parse --show-toplevel
