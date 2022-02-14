@@ -80,8 +80,16 @@ ZSH_THEME="robbyrussell"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
-  # zsh-autosuggestions
-  # zsh-syntax-highlighting
+  tmux
+
+  # git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
+  zsh-autosuggestions
+
+  # git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
+  zsh-syntax-highlighting
+
+  # git clone https://github.com/supercrabtree/k $ZSH_CUSTOM/plugins/k
+  k
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -152,4 +160,11 @@ function killbyport() {
 
 # Tmux
 export TERM='screen-256color'
+ZSH_TMUX_AUTOSTART=true
+# ZSH_TMUX_AUTOSTART_ONCE=false
+ZSH_TMUX_AUTOQUIT=true
 
+if [ -z "$TMUX" ]
+then
+    tmux attach -t TMUX || tmux new -s TMUX
+fi
