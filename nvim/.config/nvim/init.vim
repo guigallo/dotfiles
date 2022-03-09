@@ -28,7 +28,12 @@ set cmdheight=2
 set updatetime=50
 set wildmode=longest,list,full
 set wildmenu
-set wildignore=*/node_modules/*,*/.next/*
+set wildignore+=**/coverage/*
+set wildignore+=**/node_modules/*
+set wildignore+=**/android/*
+set wildignore+=**/ios/*
+set wildignore+=**/.git/*
+set wildignore+=**/.next/*
 set nobackup
 set nowritebackup
 set shortmess+=c
@@ -38,6 +43,9 @@ call plug#begin('~/.vim/plugged')
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'tpope/vim-commentary'
 Plug 'itchyny/lightline.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'kien/ctrlp.vim'
@@ -82,6 +90,7 @@ let g:lightline = {
   \   'fileformat': 'FormatFile',
   \ }
   \ }
+let g:NERDTreeGitStatusUseNerdFonts=1
 
 function! FormatFileType()
   return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : 'no ft') : ''
@@ -98,6 +107,14 @@ let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist)|(\.(swp|ico|git|svn))$'
 nnoremap <C-b> :CtrlPBuffer<cr>
 imap jk <Esc>
+nnoremap <space>/ :Commentary<CR>
+vnoremap <space>/ :Commentary<CR>
+
+" nerd tree
+nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
 
 " javascript
 let g:javascript_plugin_jsdoc = 1
@@ -111,6 +128,9 @@ nmap [h <Plug>(GitGutterPrevHunk)
 nmap ]h <Plug>(GitGutterNextHunk)
 
 " lsp
+let g:lsp_preview_float = 1
+let g:lsp_diagnostics_virtual_text_enabled = 1
+
 if executable('typescript-language-server')
   au User lsp_setup call lsp#register_server({
     \ 'name': 'javascript support using typescript-language-server',
