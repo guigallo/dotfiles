@@ -9,3 +9,5 @@
 	rebase = true
 [alias]
 	root = rev-parse --show-toplevel
+[fetch]
+	prune = true
