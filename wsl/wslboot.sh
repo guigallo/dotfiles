@@ -13,3 +13,6 @@ echo '[kvm] permission set'
 # Set correct permissions for docker
 chmod 666 /var/run/docker.sock
 echo '[docker] permission set'
+
+# Update resolv.conf
+cp /home/guigallo/personal/dotfiles/wsl/resolv.conf /etc/resolv.conf
