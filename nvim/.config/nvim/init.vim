@@ -111,6 +111,7 @@ endfunction
 let mapleader = " "
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_show_hidden = 1
 let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist)|(\.(swp|ico|git|svn))$'
 nnoremap <C-b> :CtrlPBuffer<cr>
 imap jk <Esc>
