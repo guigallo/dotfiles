@@ -40,11 +40,11 @@ set encoding=UTF-8
 call plug#begin('~/.vim/plugged')
 " theme
 Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'itchyny/lightline.vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'chrisbra/colorizer'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'airblade/vim-gitgutter'
+Plug 'nvim-lualine/lualine.nvim'
 
 " visual
 Plug 'scrooloose/nerdtree'
@@ -85,18 +85,6 @@ colorscheme dracula
 highlight Normal guibg=NONE ctermbg=NONE
 let g:webdevicons_enable = 1
 let g:webdevicons_enable_ctrlp = 1
-let g:lightline = {
-  \ 'colorscheme': 'dracula',
-  \ 'active': {
-  \   'left': [ ['mode', 'paste'],
-  \             ['gitbranch', 'readyonly', 'filename', 'modified'] ]
-  \ },
-  \ 'component_function': {
-  \   'gitbranch': 'FugitiveHead',
-  \   'filetype': 'FormatFileType',
-  \   'fileformat': 'FormatFile',
-  \ }
-  \ }
 let g:NERDTreeGitStatusUseNerdFonts=1
 
 function! FormatFileType()
