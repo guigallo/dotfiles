@@ -160,6 +160,7 @@ export PATH="$PATH:$(yarn global bin)"
 export GOOGLE_APPLICATION_CREDENTIALS=~/auth/firebase-cooltr.json
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
+export PATH="$HOME/go/bin:$PATH"
 
 # helpers
 function killbyport() {
