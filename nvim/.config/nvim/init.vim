@@ -35,7 +35,7 @@ set wildignore+=**/.next/*
 set nobackup
 set nowritebackup
 set shortmess+=c
-set encoding=UTF-8
+set encoding=utf-8
 
 call plug#begin('~/.vim/plugged')
 " theme
@@ -57,11 +57,11 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
 " coding
+Plug 'github/copilot.vim'
 Plug 'tpope/vim-commentary'
-Plug 'rstacruz/vim-closer'
-Plug 'prettier/vim-prettier', {
-  \ 'do': 'yarn install',
-  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
+" Plug 'rstacruz/vim-closer'
+Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' }
+" 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html', 'go'] }
 Plug 'stylelint/stylelint'
 
 " dont know
@@ -75,11 +75,16 @@ Plug 'saadparwaiz1/cmp_luasnip' " Snippets source for nvim-cmp
 Plug 'L3MON4D3/LuaSnip' " Snippets plugin'
 Plug 'neovim/nvim-lspconfig'
 Plug 'folke/trouble.nvim'
+
+" dap
+Plug 'mfussenegger/nvim-dap'
+Plug 'nvim-telescope/telescope-dap.nvim'
+Plug 'mfussenegger/nvim-dap-python'
 call plug#end()
 
 " themes
 let g:colorizer_auto_color = 1
-let g:colorizer_auto_filetype='css,html,scss,js'
+let g:colorizer_auto_filetype='css,html,scss'
 set guifont=FiraCode\ Nerd\ Font\ 11
 colorscheme dracula
 highlight Normal guibg=NONE ctermbg=NONE
