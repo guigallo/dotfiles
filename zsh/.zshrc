@@ -90,6 +90,9 @@ plugins=(
 
   # git clone https://github.com/supercrabtree/k $ZSH_CUSTOM/plugins/k
   k
+
+  # git clone https://github.com/jeffreytse/zsh-vi-mode $ZSH_CUSTOM/plugins/zsh-vi-mode
+  zsh-vi-mode
 )
 
 source $ZSH/oh-my-zsh.sh
