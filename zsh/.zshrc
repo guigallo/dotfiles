@@ -121,9 +121,9 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
 
-# export NVM_DIR="$HOME/.nvm"
-# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 alias n=nvim
 alias ..="cd .."
@@ -148,7 +148,7 @@ alias gitundolastlocal="git reset HEAD~"
 alias gitcleanbranchs='git branch --merged | egrep -v "(^\*|main|master|dev)" | xargs git branch -d'
 
 # java
-export JAVA_HOME=$(readlink -f /usr/bin/javac | sed "s:/bin/javac::")
+# export JAVA_HOME=$(readlink -f /usr/bin/javac | sed "s:/bin/javac::")
 export ANDROID_HOME=$HOME/Android/Sdk
 export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/tools
@@ -156,10 +156,8 @@ export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 
 # dev
-export PATH="$PATH:$(yarn global bin)"
+# export PATH="$PATH:$(yarn global bin)"
 export GOOGLE_APPLICATION_CREDENTIALS=~/auth/firebase-cooltr.json
-export VOLTA_HOME="$HOME/.volta"
-export PATH="$VOLTA_HOME/bin:$PATH"
 export PATH="$HOME/go/bin:$PATH"
 
 # helpers
@@ -181,4 +179,4 @@ then
     tmux attach -t TMUX || tmux new -s TMUX
 fi
 
-
+echo '[.zshrc] loaded'

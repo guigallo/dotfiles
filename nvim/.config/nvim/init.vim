@@ -85,7 +85,7 @@ call plug#end()
 " themes
 let g:colorizer_auto_color = 1
 let g:colorizer_auto_filetype='css,html,scss'
-set guifont=FiraCode\ Nerd\ Font\ 11
+" set guifont=FiraCode\ Nerd\ Font\ 11
 colorscheme dracula
 highlight Normal guibg=NONE ctermbg=NONE
 let g:webdevicons_enable = 1
