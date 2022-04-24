@@ -5,7 +5,7 @@ if [[ -z $STOW_FOLDERS ]]; then
 fi
 
 if [[ -z $DOTFILES ]]; then
-  DOTFILES=$HOME/personal/dotfiles
+  DOTFILES=$HOME/git/dotfiles
 fi
 echo $foldern
 
