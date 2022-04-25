@@ -90,7 +90,7 @@ bindsym XF86MonBrightnessDown exec light -U 1 # decrease screen brightness
 # TODO
 # If you want transparency on non-focused windows, ...
 # exec_always --no-startup-id picom --config ~/.config/i3/picom.conf
-# exec_always --no-startup-id nitrogen --restore
+exec_always --no-startup-id nitrogen --restore
 # exec_always --no-startup-id ~/.config/i3/scripts/mouse.sh
 
 ################################################################################
