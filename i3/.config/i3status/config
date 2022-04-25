@@ -69,8 +69,8 @@ cpu_temperature 0 {
 
 memory {
   format = " %used  "
-  threshold_degraded = "13G"
-  format_degraded = "MEMORY < %available"
+  threshold_degraded = "2G"
+  format_degraded = " < %available"
 }
 
 tztime local {
