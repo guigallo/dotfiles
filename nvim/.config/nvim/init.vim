@@ -39,7 +39,7 @@ set encoding=utf-8
 
 call plug#begin('~/.vim/plugged')
 " theme
-Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'arcticicestudio/nord-vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'chrisbra/colorizer'
 Plug 'kyazdani42/nvim-web-devicons'
@@ -86,7 +86,7 @@ call plug#end()
 let g:colorizer_auto_color = 1
 let g:colorizer_auto_filetype='css,html,scss'
 " set guifont=FiraCode\ Nerd\ Font\ 11
-colorscheme dracula
+colorscheme nord
 highlight Normal guibg=NONE ctermbg=NONE
 let g:webdevicons_enable = 1
 let g:webdevicons_enable_ctrlp = 1
