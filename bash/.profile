@@ -22,6 +22,9 @@ export MANPAGER="less -R --use-color -Dd+r -Du+b"
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
 
+# go
+export PATH="$HOME/go/bin:$PATH"
+
 # git
 export GITHUB_TOKEN=""
 alias gitlogin='eval "$(ssh-agent -s)" && ssh-add ~/.ssh/github_id_ed25519'

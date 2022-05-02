@@ -55,6 +55,7 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'arkav/lualine-lsp-progress'
 
 " coding
 Plug 'github/copilot.vim'
@@ -63,6 +64,9 @@ Plug 'tpope/vim-commentary'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' }
 " 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html', 'go'] }
 Plug 'stylelint/stylelint'
+
+" golang
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 " dont know
 Plug 'nvim-lua/plenary.nvim'

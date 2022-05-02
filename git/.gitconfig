@@ -13,3 +13,5 @@
 	prune = true
 [color]
 	ui = auto
+[safe]
+	directory = /opt/flutter

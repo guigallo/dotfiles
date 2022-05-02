@@ -1,6 +1,11 @@
 -- Lualine bar
 require('lualine').setup {
-  options = { theme = 'dracula' }
+  options = { theme = 'nord' },
+  sections = {
+    lualine_c = {
+      'lsp_progress'
+    }
+  }
 }
 
 -- Change diagnostic symbols in the sign column (gutter)
