@@ -39,6 +39,9 @@ function killbyport() {
 # configs
 export EDITOR='nvim'
 
+# broot
+source /home/guigallo/.config/broot/launcher/bash/br
+
 # dotfiles
 alias dotzsh='n $HOME/.zshrc'
 alias dotprofile='n $HOME/.profile'
