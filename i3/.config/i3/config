@@ -4,13 +4,14 @@
 
 # 1.Variables
 # 2.Shortcuts and execs
-# 3.Movements
-# 4.Menus
-# 5.Scratchpad
-# 6.Tiling
-# 7.Gaps
-# 8.Bar
-# 9.Theme
+# 3.Windows specific
+# 4.Movements
+# 5.Menus
+# 6.Scratchpad
+# 7.Tiling
+# 8.Gaps
+# 9.Bar
+# 10.Theme
 
 ################################################################################
 # 1.Variables
@@ -165,7 +166,7 @@ bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 
 ################################################################################
-# 4.Menus
+# 5.Menus
 ################################################################################
 
 # Start dmenu
@@ -212,7 +213,7 @@ mode "resize" {
 }
 
 ################################################################################
-# 5.Scratchpad
+# 6.Scratchpad
 ################################################################################
 
 # Make the currently focused window a scratchpad
@@ -222,7 +223,7 @@ bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
 ################################################################################
-# 6.Tiling
+# 7.Tiling
 ################################################################################
 
 # Toggle tiling / floating
@@ -255,7 +256,7 @@ bindsym $mod+a focus parent
 bindsym $mod+c focus child
 
 ################################################################################
-# 7.Gaps
+# 8.Gaps
 ################################################################################
 
 for_window [class="^.*"] border pixel 1
@@ -265,7 +266,7 @@ smart_gaps on
 smart_borders on
 
 ################################################################################
-# 8.Bar
+# 9.Bar
 ################################################################################
 
 # Bar toggle, hide or show
@@ -297,7 +298,7 @@ font pango:FiraCode Nerd Font, 10
 # }
 
 ################################################################################
-# 9.Theme
+# 10.Theme
 ################################################################################
 
 # class                 border  backgr. text    indicator
