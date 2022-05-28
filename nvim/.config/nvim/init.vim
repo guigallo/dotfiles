@@ -19,7 +19,7 @@ set incsearch
 set termguicolors
 set scrolloff=8
 set noshowmode
-set completeopt=menuone,noinsert,noselect,preview
+set completeopt=menu,menuone,noselect,preview
 set signcolumn=yes
 set colorcolumn=80
 set cmdheight=2
@@ -57,12 +57,17 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'arkav/lualine-lsp-progress'
 
+" copilot
+" Plug 'github/copilot.vim'
+" Plug 'zbirenbaum/copilot.lua'
+" Plug 'zbirenbaum/copilot-cmp'
+
 " coding
-Plug 'github/copilot.vim'
 Plug 'tpope/vim-commentary'
 " Plug 'rstacruz/vim-closer'
-Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' }
-" 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html', 'go'] }
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'yarn install --frozen-lockfile --production',
+  \ 'for': ['javascript', 'typescript', 'javascriptreact', 'typescriptreact', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html', 'go'] }
 Plug 'stylelint/stylelint'
 
 " golang
@@ -84,6 +89,7 @@ Plug 'folke/trouble.nvim'
 Plug 'mfussenegger/nvim-dap'
 Plug 'nvim-telescope/telescope-dap.nvim'
 Plug 'mfussenegger/nvim-dap-python'
+
 call plug#end()
 
 " themes
@@ -153,7 +159,7 @@ endfun
 augroup GUIGALLO
   autocmd!
   autocmd BufWritePre * :call TrimWhitespace()
-  autocmd FileType javascript,typescript setlocal foldmethod=syntax
+  autocmd FileType javascript,typescript,javascriptreact,typescriptreact,rust setlocal foldmethod=syntax
   autocmd
     \ BufNewFile,BufRead,BufEnter,BufLeave,WinEnter,WinLeave,WinNew
     \ *.css,*.scss

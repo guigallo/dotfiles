@@ -69,8 +69,10 @@ cmp.setup {
     end,
   },
   sources = {
-    { name = 'nvim_lsp' },
-    { name = 'luasnip' },
+    -- { name = 'copilot', group_index = 2 },
+    { name = 'nvim_lsp', group_index = 2 },
+    -- { name = 'path', group_index = 2 },
+    { name = 'luasnip', group_index = 2 },
   },
   formatting = {
     format = function(_, vim_item)
@@ -80,3 +82,4 @@ cmp.setup {
   },
 }
 
+-- vim.g.copilot_no_tab_map = true
