@@ -100,7 +100,16 @@ exec_always --no-startup-id nitrogen --restore
 # exec_always --no-startup-id ~/.config/i3/scripts/mouse.sh
 
 ################################################################################
-# 3.Movements
+# ?.Windows specific
+################################################################################
+
+for_window [class="Galculator"] floating enable
+for_window [class="Nautilus"] floating enable
+for_window [class="Toggl Desktop"] floating enable
+for_window [class="solanum"] floating enable
+
+################################################################################
+# 4.Movements
 ################################################################################
 
 # Use Mouse+$mod to drag floating windows to their wanted position
