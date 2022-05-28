@@ -48,4 +48,11 @@ alias dotprofile='n $HOME/.profile'
 alias doti3='n $HOME/.config/i3/config'
 alias dotvi='n $HOME/.config/nvim/init.vim'
 
+# android
+export ANDROID_HOME=$HOME/Android/Sdk
+export ANDROID_SDK_ROOT=$ANDROID_HOME
+export PATH=$PATH:$ANDROID_SDK_ROOT/emulator
+export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools
+export ANDROID_AVD_HOME=$HOME/.android/avd
+
 echo '[.profile] loaded'
