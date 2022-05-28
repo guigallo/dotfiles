@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-BACKUP_DOTENVS=".Xresources,.bash_profile,.bashrc,.config/dunst/dunstrc,.gitconfig,.config/i3/config,.npmrc,.config/nvim/init/vim,.config/ranger/colorschemes,.config/rofi/config,.zshrc,.tmux.config"
+BACKUP_DOTENVS=".Xresources,.bash_profile,.bashrc,.config/dunst/dunstrc,.gitconfig,.config/i3/config,.npmrc,.config/nvim/init/vim,.config/ranger/colorschemes,.config/rofi/config,.zshrc,.tmux.config,.config/polybar"
 BACKUP_FOLDER=$HOME/.dotfiles.backup
 
 mkdir -pv $BACKUP_FOLDER
