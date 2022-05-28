@@ -82,6 +82,9 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 bindsym XF86MonBrightnessUp exec light -A 1 # increase screen brightness
 bindsym XF86MonBrightnessDown exec light -U 1 # decrease screen brightness
 
+# polybar
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+
 # exec --no-startup-id xrandr --output eDP-1 --mode 2560x1080 --rate 144.00
 # exec xrandr --setprovideroutputsource modesetting NVIDIA-0
 
@@ -263,26 +266,26 @@ bindsym $mod+b bar mode toggle
 # is used in the bar {} block below.
 font pango:FiraCode Nerd Font, 10
 
-bar {
-  height 16
-  position bottom
-	status_command i3status
-  tray_padding 1
-  strip_workspace_numbers yes
+# bar {
+#   height 16
+#   position bottom
+# 	status_command i3status
+#   tray_padding 1
+#   strip_workspace_numbers yes
 
-  colors {
-    separator  #1f222d
-    background #1f222d
-    statusline #81a1c1
+#   colors {
+#     separator  #1f222d
+#     background #1f222d
+#     statusline #81a1c1
 
-    #                   border  background text
-    focused_workspace  #1f222d #1f222d    #81a1c1
-    active_workspace   #1f222d #252936    #5e81ac
-    inactive_workspace #1f222d #1f222d    #4c566a
-    urgent_workspace   #1f222d #1f222d    #ee829f
-    binding_mode       #1f222d #81a1c1    #2e3440
-  }
-}
+#     #                   border  background text
+#     focused_workspace  #1f222d #1f222d    #81a1c1
+#     active_workspace   #1f222d #252936    #5e81ac
+#     inactive_workspace #1f222d #1f222d    #4c566a
+#     urgent_workspace   #1f222d #1f222d    #ee829f
+#     binding_mode       #1f222d #81a1c1    #2e3440
+#   }
+# }
 
 ################################################################################
 # 9.Theme
