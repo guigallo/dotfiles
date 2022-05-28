@@ -1,17 +1,41 @@
+[alias]
+	root = rev-parse --show-toplevel
+
+[code]
+	editor = nvim
+
+[color]
+	ui = auto
+
+[core]
+  pager = delta
+
+[delta]
+  light = false
+  line-numbers = true
+  navigate = true # use n and N to move between diff sections
+
+[diff]
+  colorMoved = default
+
+[fetch]
+	prune = true
+
 [init]
 	defaultBranch = main
+
+[interactive]
+  diffFilter = delta --color-only
+
+[merge]
+  conflictstyle = diff3
+
+[pull]
+	rebase = true
+
+[safe]
+	directory = /opt/flutter
+
 [user]
 	email = guilherme.gg1@hotmail.com
 	name = guigallo
-[code]
-	editor = nvim
-[pull]
-	rebase = true
-[alias]
-	root = rev-parse --show-toplevel
-[fetch]
-	prune = true
-[color]
-	ui = auto
-[safe]
-	directory = /opt/flutter
