@@ -55,4 +55,7 @@ export PATH=$PATH:$ANDROID_SDK_ROOT/emulator
 export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools
 export ANDROID_AVD_HOME=$HOME/.android/avd
 
+# keymap
+setxkbmap -model 105 -layout us,us -variant ,intl -option grp:alt_shift_toggle
+
 echo '[.profile] loaded'
