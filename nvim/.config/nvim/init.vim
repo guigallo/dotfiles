@@ -101,6 +101,7 @@ highlight Normal guibg=NONE ctermbg=NONE
 let g:webdevicons_enable = 1
 let g:webdevicons_enable_ctrlp = 1
 let g:NERDTreeGitStatusUseNerdFonts=1
+let g:NERDTreeShowHidden = 1
 
 function! FormatFileType()
   return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : 'no ft') : ''
