@@ -1,5 +1,9 @@
 [global]
+
 font = FiraCode Nerd Font
+
+origin = bottom-center
+corner_radius = 6
 
 # Allow a small subset of html markup:
 #   <b>bold</b>
@@ -12,7 +16,7 @@ font = FiraCode Nerd Font
 # If markup is not allowed, those tags will be stripped out of the
 # message.
 markup = yes
-plain_text = no
+# plain_text = no
 
 # The format of the message.  Possible variables are:
 #   %a  appname
@@ -38,7 +42,7 @@ alignment = center
 # window allows bounces back and forth.
 # This option conflicts with "word_wrap".
 # Set to 0 to disable.
-bounce_freq = 0
+# bounce_freq = 0
 
 # Show age of message if message is older than show_age_threshold
 # seconds.
@@ -56,7 +60,6 @@ ignore_newline = no
 stack_duplicates = yes
 hide_duplicate_count = yes
 
-
 # The geometry of the window:
 #   [{width}]x{height}[+/-{x}+/-{y}]
 # The geometry of the message window.
@@ -69,8 +72,8 @@ hide_duplicate_count = yes
 # the top and down respectevly.
 # The width can be negative.  In this case the actual width is the
 # screen width minus the width defined in within the geometry option.
-#geometry = "250x50-40+40"
-geometry = "300x50-1130+15"
+# geometry = "250x50-40+40"
+# geometry = "300x50-1130+15"
 
 # Shrink window if it's smaller than the width.  Will be ignored if
 # width is 0.
@@ -139,7 +142,7 @@ separator_color = frame
 # Print a notification on startup.
 # This is mainly for error detection, since dbus (re-)starts dunst
 # automatically after a crash.
-startup_notification = false
+# startup_notification = false
 
 # dmenu path.
 dmenu = /usr/bin/dmenu -p dunst:
@@ -148,16 +151,14 @@ dmenu = /usr/bin/dmenu -p dunst:
 browser = /usr/bin/firefox -new-tab
 
 # Align icons left/right/off
-icon_position = off
+icon_position = left
 max_icon_size = 80
 
 # Paths to default icons.
 icon_path = /usr/share/icons/Paper/16x16/mimetypes/:/usr/share/icons/Paper/48x48/status/:/usr/share/icons/Paper/16x16/devices/:/usr/share/icons/Paper/48x48/notifications/:/usr/share/icons/Paper/48x48/emblems/
 
 frame_width = 3
-frame_color = "#8EC07C"
-
-[shortcuts]
+frame_color = "#A3BE8C"
 
 # Shortcuts are specified as [modifier+][modifier+]...key
 # Available modifiers are "ctrl", "mod1" (the alt-key), "mod2",
@@ -168,39 +169,57 @@ frame_color = "#8EC07C"
 close = ctrl+space
 
 # Close all notifications.
-close_all = ctrl+shift+space
+# close_all = ctrl+shift+space
 
 # Redisplay last message(s).
 # On the US keyboard layout "grave" is normally above TAB and left
 # of "1".
-history = ctrl+grave
+# history = ctrl+grave
 
 # Context menu.
-context = ctrl+shift+period
+# context = ctrl+shift+period
 
 [urgency_low]
 # IMPORTANT: colors have to be defined in quotation marks.
 # Otherwise the "#" and following would be interpreted as a comment.
-frame_color = "#3B7C87"
-foreground = "#3B7C87"
-background = "#191311"
-#background = "#2B313C"
-timeout = 4
+background = "#3b4252"
+foreground = "#eceff4"
+frame_color = "#4c566a"
+timeout = 10
 
 [urgency_normal]
-frame_color = "#5B8234"
-foreground = "#5B8234"
-background = "#191311"
-#background = "#2B313C"
-timeout = 6
+background = "#3b4252"
+foreground = "#eceff4"
+timeout = 10
 
 [urgency_critical]
-frame_color = "#B7472A"
-foreground = "#B7472A"
-background = "#191311"
-#background = "#2B313C"
-timeout = 8
+background = "#3b4252"
+foreground = "#eceff4"
+frame_color = "#bf616a"
+timeout = 0
 
+#[urgency_low]
+## IMPORTANT: colors have to be defined in quotation marks.
+## Otherwise the "#" and following would be interpreted as a comment.
+#frame_color = "#3B7C87"
+#foreground = "#3B7C87"
+#background = "#191311"
+##background = "#2B313C"
+#timeout = 4
+
+#[urgency_normal]
+#frame_color = "#5B8234"
+#foreground = "#5B8234"
+#background = "#191311"
+##background = "#2B313C"
+#timeout = 6
+
+#[urgency_critical]
+#frame_color = "#B7472A"
+#foreground = "#B7472A"
+#background = "#191311"
+##background = "#2B313C"
+#timeout = 8
 
 # Every section that isn't one of the above is interpreted as a rules to
 # override settings for certain messages.
