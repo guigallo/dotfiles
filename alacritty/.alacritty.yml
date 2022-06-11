@@ -66,7 +66,7 @@ window:
   #
   # Window opacity as a floating point number from `0.0` to `1.0`.
   # The value `0.0` is completely transparent and `1.0` is opaque.
-  opacity: 0.7
+  opacity: 0.9
 
   # Startup Mode (changes require restart)
   #
@@ -208,7 +208,7 @@ colors:
   # Whether or not `window.opacity` applies to all cell backgrounds or only to
   # the default background. When set to `true` all cells will be transparent
   # regardless of their background color.
-  #transparent_background_colors: false
+  transparent_background_colors: true
 
 # Bell
 #
@@ -245,9 +245,9 @@ bell:
   # When set to `command: None`, no command will be executed.
   #
   # Example:
-  command:
-    program: notify-send
-    # args: ["Hello, World!"]
+  # command:
+  #   program: notify-send
+  #   args: ["Hello, World!"]
   #
   #command: None
 
