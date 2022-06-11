@@ -2,10 +2,15 @@ local M = {}
 
 function M.setup()
   -- Indicate first time installation
-  local packer_bootstrap = false
+  local packer_bootstrap = true
 
   -- packer.nvim configuration
   local conf = {
+    profile = {
+      enable = true,
+      threshold = 0, -- the amount in ms that a plugins load time must be over for it to be included in the profile
+    },
+
     display = {
       open_fn = function()
         return require("packer.util").float { border = "rounded" }
@@ -36,6 +41,9 @@ function M.setup()
   local function plugins(use)
     use { "wbthomason/packer.nvim" }
 
+    -- Load only when require
+    use { "nvim-lua/plenary.nvim", module = "plenary" }
+
     -- Colorscheme
     use {
       "sainnhe/everforest",
@@ -55,12 +63,59 @@ function M.setup()
     -- Git
     use {
       "TimUntersberger/neogit",
+      cmd = "Neogit",
       requires = "nvim-lua/plenary.nvim",
       config = function()
         require("config.neogit").setup()
       end,
     }
 
+    -- WhichKey
+    use {
+       "folke/which-key.nvim",
+       event = "VimEnter",
+       config = function()
+         require("config.whichkey").setup()
+       end,
+    }
+    
+    -- Better icons
+    use {
+      "kyazdani42/nvim-web-devicons",
+      module = "nvim-web-devicons",
+      config = function()
+        require("nvim-web-devicons").setup { default = true }
+      end,
+    }
+
+    -- Status line
+    use {
+      "nvim-lualine/lualine.nvim",
+      event = "VimEnter",
+      config = function()
+        require("config.lualine").setup()
+      end,
+      requires = { "nvim-web-devicons" },
+    }
+
+    -- Treesitter
+    use {
+      "nvim-treesitter/nvim-treesitter",
+      run = ":TSUpdate",
+      config = function()
+        require("config.treesitter").setup()
+      end,
+    }
+    use {
+      "SmiteshP/nvim-gps",
+      requires = "nvim-treesitter/nvim-treesitter",
+      module = "nvim-gps",
+      config = function()
+        require("nvim-gps").setup()
+      end,
+    }
+
+    -- Bootstrap nvim
     if packer_bootstrap then
       print "Restart Neovim required after installation!"
       require("packer").sync()

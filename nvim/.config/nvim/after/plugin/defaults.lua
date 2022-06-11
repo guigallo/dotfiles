@@ -20,6 +20,9 @@ opt.updatetime = 250 --Decrease update time
 opt.signcolumn = "yes" -- Always show sign column
 opt.clipboard = "unnamedplus" -- Access system clipboard
 
+-- WhichKey
+opt.timeoutlen = 300 -- Time in milliseconds to wait for a mapped sequence to complete.
+
 -- Highlight on yank
 vim.cmd [[
   augroup YankHighlight
