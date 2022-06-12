@@ -23,6 +23,15 @@ opt.clipboard = "unnamedplus" -- Access system clipboard
 -- WhichKey
 opt.timeoutlen = 300 -- Time in milliseconds to wait for a mapped sequence to complete.
 
+-- File search
+opt.path:remove "/usr/include"
+opt.path:append "**"
+opt.wildignorecase = true
+opt.wildignore:append "**/node_modules/*"
+opt.wildignore:append "**/.git/*"
+opt.wildignore:append "**/build/*"
+-- vim.cmd [[set path=.,,,$PWD/**]] -- Alternatively set the path
+
 -- Highlight on yank
 vim.cmd [[
   augroup YankHighlight

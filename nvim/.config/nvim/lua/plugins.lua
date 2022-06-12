@@ -115,6 +115,26 @@ function M.setup()
       end,
     }
 
+    -- nvim-tree
+    use {
+     "kyazdani42/nvim-tree.lua",
+     requires = {
+       "kyazdani42/nvim-web-devicons",
+     },
+     cmd = { "NvimTreeToggle", "NvimTreeClose" },
+       config = function()
+         require("config.nvimtree").setup()
+       end,
+    }
+
+    -- fzf
+    -- use { "junegunn/fzf.vim" }
+    use {
+      "ibhagwan/fzf-lua",
+       requires = { "kyazdani42/nvim-web-devicons" },
+    }
+    use { "ctrlpvim/ctrlp.vim" }
+
     -- Bootstrap nvim
     if packer_bootstrap then
       print "Restart Neovim required after installation!"
