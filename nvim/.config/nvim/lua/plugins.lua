@@ -44,11 +44,15 @@ function M.setup()
     -- Load only when require
     use { "nvim-lua/plenary.nvim", module = "plenary" }
 
-    -- Theme
+		--
+    -- User interface
+		--
+
     use {
       "arcticicestudio/nord-vim",
       config = function() vim.cmd "colorscheme nord" end
     }
+
     use {
 			"kyazdani42/nvim-web-devicons",
 			module = "nvim-web-devicons",
@@ -56,17 +60,13 @@ function M.setup()
         require("nvim-web-devicons").setup { default = true }
       end,
 		}
-    use { "airblade/vim-gitgutter" }
+
     use {
       "nvim-lualine/lualine.nvim",
       event = "VimEnter",
       config = function() require("config.lualine").setup() end,
       requires = { "kyazdani42/nvim-web-devicons", opt = true },
     }
-
-		--
-    -- User interface
-		--
 
     use {
       "rcarriga/nvim-notify",
@@ -75,31 +75,40 @@ function M.setup()
     }
 
     use { "scrooloose/nerdtree" }
+
     use { "Xuyuanp/nerdtree-git-plugin", requires = { "scrooloose/nerdtree" } }
+
     use { "kien/ctrlp.vim" }
+
     use { "tpope/vim-fugitive" }
+
     use {
 	    "nvim-treesitter/nvim-treesitter",
 	    run = ":TSUpdate",
 	    config = function() require("config.treesitter") end,
     }
+
     use {
       "SmiteshP/nvim-gps",
       requires = "nvim-treesitter/nvim-treesitter",
       module = "nvim-gps",
       config = function() require("nvim-gps").setup() end,
     }
+
     use { "arkav/lualine-lsp-progress" }
+
     use {
       "ibhagwan/fzf-lua",
-       requires = { "kyazdani42/nvim-web-devicons" },
+			event = "BufEnter",
+		  requires = { "kyazdani42/nvim-web-devicons" },
     }
-    -- WhichKey
+
     use {
        "folke/which-key.nvim",
        event = "VimEnter",
        config = function() require("config.whichkey").setup() end,
     }
+
     use {
       "stevearc/dressing.nvim",
       event = "BufEnter",
@@ -109,12 +118,14 @@ function M.setup()
         }
       end,
     }
+
     use {
 			"nvim-telescope/telescope.nvim",
 			module = "telescope",
 			as = "telescope",
 			requires = { "nvim-lua/plenary.nvim" }
 		}
+
 		use {
       "akinsho/nvim-bufferline.lua",
       event = "BufReadPre",
@@ -122,10 +133,17 @@ function M.setup()
       config = function() require("config.bufferline").setup() end,
     }
 
+		--
 		-- Coding
+		--
+    use { "airblade/vim-gitgutter" }
+
     use { "tpope/vim-commentary" }
+
     use { "stylelint/stylelint" }
+
 		-- use { "rstacruz/vim-closer" }
+
     use {
 			"prettier/vim-prettier",
 			run = "yarn install --frozen-lockfile --production",
@@ -137,40 +155,83 @@ function M.setup()
 			},
 		}
 
-		-- Go
+    use {
+      "windwp/nvim-autopairs",
+      wants = "nvim-treesitter",
+      module = { "nvim-autopairs.completion.cmp", "nvim-autopairs" },
+      config = function()
+        require("config.autopairs").setup()
+      end,
+    }
+
     use { "fatih/vim-go", run = ":GoUpdateBinaries" }
 
+		--
 		-- LSP
-    use { "neovim/nvim-lspconfig" }
-    use { "L3MON4D3/LuaSnip" }
+		--
+    use {
+			"neovim/nvim-lspconfig",
+			opt = true,
+			event = "BufReadPre",
+			wants = { "coq_nvim", "nvim-lsp-installer", "lsp_signature.nvim" },
+			config = function() require("config.lsp").setup() end,
+			requires = {
+				"williamboman/nvim-lsp-installer",
+				"ray-x/lsp_signature.nvim",
+			},
+		}
+
+		use {
+			"ms-jpq/coq_nvim",
+			disable = false,
+		}
+
     use {
 			"hrsh7th/nvim-cmp",
-			config = function ()
-				require'cmp'.setup {
-				snippet = {
-					expand = function(args) require'luasnip'.lsp_expand(args.body) end
+			event = "InsertEnter",
+			opt = true,
+			config = function() require("config.cmp").setup() end,
+			wants = { "LuaSnip" },
+			requires = {
+				"hrsh7th/cmp-buffer",
+				"hrsh7th/cmp-path",
+				"hrsh7th/cmp-nvim-lua",
+				"ray-x/cmp-treesitter",
+				"hrsh7th/cmp-cmdline",
+				"saadparwaiz1/cmp_luasnip",
+				"hrsh7th/cmp-nvim-lsp",
+				{
+					"L3MON4D3/LuaSnip",
+					wants = "friendly-snippets",
+					config = function() require("config.luasnip").setup() end,
 				},
-
-				sources = {
-					{ name = 'luasnip' },
-					-- more sources
-				},
-			}
-			end
-		}
-    use { "hrsh7th/cmp-nvim-lsp" }
-    use { "saadparwaiz1/cmp_luasnip" }
-    use {
-			"folke/trouble.nvim",
-			requires = "kyazdani42/nvim-web-devicons",
-			config = function() require("trouble").setup { } end
+				"rafamadriz/friendly-snippets",
+			},
+			disable = true,
 		}
 
+    -- use { "hrsh7th/cmp-nvim-lsp" }
+
+    -- use { "saadparwaiz1/cmp_luasnip" }
+
+    -- use {
+		-- 	"folke/trouble.nvim",
+		-- 	requires = "kyazdani42/nvim-web-devicons",
+		-- 	config = function() require("trouble").setup { } end
+		-- }
+
+		--
 		-- DAP
+		--
     use { "mfussenegger/nvim-dap" }
+
     use { "nvim-telescope/telescope-dap.nvim" }
+
     use { "mfussenegger/nvim-dap-python" }
 
+		--
+		-- Sync
+		--
     if packer_bootstrap then
       print "Restart Neovim required after installation!"
       require("packer").sync()
