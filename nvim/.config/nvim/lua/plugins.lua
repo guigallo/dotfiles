@@ -173,17 +173,12 @@ function M.setup()
 			"neovim/nvim-lspconfig",
 			opt = true,
 			event = "BufReadPre",
-			wants = { "coq_nvim", "nvim-lsp-installer", "lsp_signature.nvim" },
+			wants = { "nvim-cmp", "nvim-lsp-installer", "lsp_signature.nvim" },
 			config = function() require("config.lsp").setup() end,
 			requires = {
 				"williamboman/nvim-lsp-installer",
 				"ray-x/lsp_signature.nvim",
 			},
-		}
-
-		use {
-			"ms-jpq/coq_nvim",
-			disable = false,
 		}
 
     use {
@@ -207,12 +202,8 @@ function M.setup()
 				},
 				"rafamadriz/friendly-snippets",
 			},
-			disable = true,
+			disable = false,
 		}
-
-    -- use { "hrsh7th/cmp-nvim-lsp" }
-
-    -- use { "saadparwaiz1/cmp_luasnip" }
 
     -- use {
 		-- 	"folke/trouble.nvim",

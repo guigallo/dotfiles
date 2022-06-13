@@ -20,8 +20,10 @@ function M.setup()
   }
 
   local mappings = {
-    ["w"] = { "<cmd>update!<CR>", "Save" },
+		["n"] = { "<cmd>NERDTreeFocus<CR>", "NERD Tree" },
+
     ["q"] = { "<cmd>q!<CR>", "Quit" },
+    ["w"] = { "<cmd>update!<CR>", "Save" },
 
     b = {
       name = "Buffer",

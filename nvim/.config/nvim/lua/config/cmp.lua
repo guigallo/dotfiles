@@ -1,5 +1,33 @@
 local M = {}
 
+local kind_icons = {
+  Text = "",
+  Method = "",
+  Function = "",
+  Constructor = "",
+  Field = "",
+  Variable = "",
+  Class = "ﴯ",
+  Interface = "",
+  Module = "",
+  Property = "ﰠ",
+  Unit = "",
+  Value = "",
+  Enum = "",
+  Keyword = "",
+  Snippet = "",
+  Color = "",
+  File = "",
+  Reference = "",
+  Folder = "",
+  EnumMember = "",
+  Constant = "",
+  Struct = "",
+  Event = "",
+  Operator = "",
+  TypeParameter = ""
+}
+
 function M.setup()
   local has_words_before = function()
     local line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -10,8 +38,8 @@ function M.setup()
   local cmp = require "cmp"
 
   cmp.setup {
-    completion = { completeopt = "menu,menuone,noinsert", keyword_length = 1 },
-    experimental = { native_menu = false, ghost_text = false },
+    -- completion = { completeopt = "menu,menuone,noinsert", keyword_length = 1 },
+    -- experimental = { native_menu = false, ghost_text = false },
     snippet = {
       expand = function(args)
         require("luasnip").lsp_expand(args.body)
@@ -27,13 +55,14 @@ function M.setup()
           treesitter = "[Treesitter]",
           path = "[Path]",
         })[entry.source.name]
+				vim_item.kind = (kind_icons[vim_item.kind] or '') .. ' ' .. vim_item.kind
         return vim_item
       end,
     },
     mapping = {
       ["<C-k>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
       ["<C-j>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
-      ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
+      ["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
       ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
       ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
       ["<C-e>"] = cmp.mapping { i = cmp.mapping.close(), c = cmp.mapping.close() },
@@ -57,11 +86,7 @@ function M.setup()
         else
           fallback()
         end
-      end, {
-        "i",
-        "s",
-        "c",
-      }),
+      end, { "i", "s", "c" }),
       ["<S-Tab>"] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.select_prev_item()
@@ -70,11 +95,7 @@ function M.setup()
         else
           fallback()
         end
-      end, {
-        "i",
-        "s",
-        "c",
-      }),
+      end, { "i", "s", "c" }),
     },
     sources = {
       { name = "nvim_lsp" },
@@ -83,14 +104,15 @@ function M.setup()
       { name = "luasnip" },
       { name = "nvim_lua" },
       { name = "path" },
-      -- { name = "spell" },
-      -- { name = "emoji" },
-      -- { name = "calc" },
     },
-    documentation = {
-      border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
-      winhighlight = "NormalFloat:NormalFloat,FloatBorder:TelescopeBorder",
-    },
+		window = {
+			completation = cmp.config.window.bordered(),
+			documentation = cmp.config.window.bordered(),
+		}
+    -- documentation = {
+    --   border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+    --   winhighlight = "NormalFloat:NormalFloat,FloatBorder:TelescopeBorder",
+    -- },
   }
 
   -- Use buffer source for `/`
@@ -111,7 +133,9 @@ function M.setup()
 
   -- Auto pairs
   local cmp_autopairs = require "nvim-autopairs.completion.cmp"
-  cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done { map_char = { tex = "" } })
+  cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done {
+		map_char = { tex = "" }
+	})
 end
 
 return M
