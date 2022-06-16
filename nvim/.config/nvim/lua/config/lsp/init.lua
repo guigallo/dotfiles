@@ -5,11 +5,19 @@ local servers = {
   html = {},
   jsonls = {},
   rust_analyzer = {},
-  sumneko_lua = {},
+  sumneko_lua = {
+    settings = {
+      Lua = {
+        diagnostics = {
+          globals = { 'vim' }
+        }
+      }
+    },
+  },
   tsserver = {},
-	bashls = {},
-	graphql = {},
-	dockerls = {},
+  bashls = {},
+  graphql = {},
+  dockerls = {},
 }
 
 local function on_attach(client, bufnr)
@@ -41,7 +49,7 @@ local opts = {
 
 function M.setup()
   require("config.lsp.installer").setup(servers, opts)
-	require("config.lsp.theme")
+  require("config.lsp.theme")
 end
 
 return M
