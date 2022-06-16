@@ -46,22 +46,18 @@ function M.setup()
       end,
     },
     formatting = {
-      format = function(_, vim_item)
+      format = function(entry, vim_item)
         vim_item.kind = (kind_icons[vim_item.kind] or '') .. ' ' .. vim_item.kind
+        vim_item.menu = ({
+          nvim_lsp = "[LSP]",
+          buffer = "[Buffer]",
+          luasnip = "[Snip]",
+          nvim_lua = "[Lua]",
+          treesitter = "[Treesitter]",
+          path = "[Path]",
+        })[entry.source.name]
         return vim_item
       end,
-      -- format = function(entry, vim_item)
-      --   vim_item.menu = ({
-      --     nvim_lsp = "[LSP]",
-      --     buffer = "[Buffer]",
-      --     luasnip = "[Snip]",
-      --     nvim_lua = "[Lua]",
-      --     treesitter = "[Treesitter]",
-      --     path = "[Path]",
-      --   })[entry.source.name]
-      --   			vim_item.kind = (kind_icons[vim_item.kind] or '') .. ' ' .. vim_item.kind
-      --   return vim_item
-      -- end,
     },
     mapping = {
       ['<C-p>'] = cmp.mapping.select_prev_item(),
@@ -94,8 +90,6 @@ function M.setup()
       end,
       -- ["<C-k>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
       -- ["<C-j>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
-      -- ["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
-      -- ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
       -- ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
       -- ["<C-e>"] = cmp.mapping { i = cmp.mapping.close(), c = cmp.mapping.close() },
       -- ["<CR>"] = cmp.mapping {

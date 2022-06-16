@@ -57,7 +57,7 @@ local function plugins(use)
     "kyazdani42/nvim-web-devicons",
     module = "nvim-web-devicons",
     config = function()
-      require("nvim-web-devicons").setup { default = true }
+      require("config.web-devicons").setup()
     end,
   }
 
@@ -74,7 +74,10 @@ local function plugins(use)
     config = function() vim.notify = require "notify" end,
   }
 
-  use { "scrooloose/nerdtree" }
+  use {
+    "scrooloose/nerdtree",
+    config = function() require("config.nerdtree").setup() end,
+  }
 
   use { "Xuyuanp/nerdtree-git-plugin", requires = { "scrooloose/nerdtree" } }
 
@@ -140,7 +143,10 @@ local function plugins(use)
   --
   -- Coding
   --
-  use { "airblade/vim-gitgutter" }
+  use {
+    "airblade/vim-gitgutter",
+    config = function() require("config.gitgutter").setup() end,
+  }
 
   use { "tpope/vim-commentary" }
 

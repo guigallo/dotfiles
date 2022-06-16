@@ -23,6 +23,7 @@ opt.clipboard = "unnamedplus" -- Access system clipboard
 opt.scrolloff = 8
 opt.cmdheight = 2
 opt.colorcolumn = "80"
+opt.wrap = false
 
 -- WhichKey
 opt.timeoutlen = 300 -- Time in milliseconds to wait for a mapped sequence to complete.
