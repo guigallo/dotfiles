@@ -20,8 +20,8 @@ function M.setup()
   }
 
   local mappings = {
-		["n"] = { "<cmd>NERDTreeFocus<CR>", "NERD Tree" },
-
+    ["/"] = { "<cmd>Commentary<CR>", "Commentary" },
+    ["n"] = { "<cmd>NERDTreeFocus<CR>", "NERD Tree" },
     ["q"] = { "<cmd>q!<CR>", "Quit" },
     ["w"] = { "<cmd>update!<CR>", "Save" },
 
@@ -29,11 +29,11 @@ function M.setup()
       name = "Buffer",
       c = { "<Cmd>bd!<Cr>", "Close current buffer" },
       D = { "<Cmd>%bd|e#|bd#<Cr>", "Delete all buffers" },
+      p = { "<cmd>CtrlPBuffer<CR>", "CtrlP buffer" },
     },
 
     f = {
       name = "Find",
-      e = { "<cmd>NERDTreeToggle<cr>", "Explorer" },
       f = { "<cmd>lua require('utils.finder').find_files()<cr>", "Files" },
       b = { "<cmd>FzfLua buffers<cr>", "Buffers" },
       o = { "<cmd>FzfLua oldfiles<cr>", "Old files" },
@@ -43,8 +43,18 @@ function M.setup()
 
     g = {
       name = "Git",
-			d = { "<cmd>G diff<CR>", "Diff" },
+      d = { "<cmd>G diff<CR>", "Diff" },
       s = { "<cmd>G status<CR>", "Status" },
+    },
+
+    t = {
+      name = "Trouble",
+      x = { "<cmd>TroubleToggle<CR>", "Toggle" },
+      w = { "<cmd>TroubleToggle workspace_diagnostics<CR>", "Workspace diagnostics" },
+      d = { "<cmd>TroubleToggle document_diagnostics<CR>", "Document diagnostics" },
+      q = { "<cmd>TroubleToggle quickfix<CR>", "Quickfix" },
+      l = { "<cmd>TroubleToggle loclist<CR>", "Loclist" },
+      ["gR"] = { "<cmd>TroubleToggle lsp_references<CR>", "LSP references" },
     },
 
     z = {

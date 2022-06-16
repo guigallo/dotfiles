@@ -37,3 +37,23 @@ keymap("n", "<Left>", ":vertical resize +1<CR>", default_opts)
 keymap("n", "<Right>", ":vertical resize -1<CR>", default_opts)
 keymap("n", "<Up>", ":resize -1<CR>", default_opts)
 keymap("n", "<Down>", ":resize +1<CR>", default_opts)
+
+-- Commentary
+-- keymap('n', "<leader>/", ":Commentary<CR>", default_opts)
+keymap('v', "<leader>/", ":Commentary<CR>", default_opts)
+
+-- Git
+-- -- Fugitive
+keymap('n', "<leader>gf", ":diffget //2<CR>", default_opts)
+keymap('n', "<leader>gj", ":diffget //3<CR>", default_opts)
+
+-- -- Gitgutter
+keymap('n', "[h", ":GitGutterPrevHunk", default_opts)
+keymap('n', "]h", ":GitGutterNextHunk", default_opts)
+
+-- LSP
+keymap('n', '<leader>e', '<cmd>lua vim.diagnostic.open_float()<CR>', default_opts)
+keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', default_opts)
+keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', default_opts)
+keymap('n', '<leader>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', default_opts)
+

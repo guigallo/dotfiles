@@ -78,7 +78,11 @@ local function plugins(use)
 
   use { "Xuyuanp/nerdtree-git-plugin", requires = { "scrooloose/nerdtree" } }
 
-  use { "kien/ctrlp.vim" }
+  use {
+    "kien/ctrlp.vim",
+    event = "VimEnter",
+    config = function() require("config.ctrlp").setup() end,
+  }
 
   use { "tpope/vim-fugitive" }
 
@@ -205,11 +209,11 @@ local function plugins(use)
     },
   }
 
-  -- use {
-  -- 	"folke/trouble.nvim",
-  -- 	requires = "kyazdani42/nvim-web-devicons",
-  -- 	config = function() require("trouble").setup { } end
-  -- }
+  use {
+  	"folke/trouble.nvim",
+  	requires = "kyazdani42/nvim-web-devicons",
+  	config = function() require("trouble").setup { } end
+  }
 
   --
   -- DAP
