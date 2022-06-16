@@ -88,12 +88,12 @@ local function plugins(use)
     config = function() require("config.treesitter") end,
   }
 
-  -- use {
-  --   "SmiteshP/nvim-gps",
-  --   requires = "nvim-treesitter/nvim-treesitter",
-  --   module = "nvim-gps",
-  --   config = function() require("nvim-gps").setup() end,
-  -- }
+  use {
+    "SmiteshP/nvim-gps",
+    requires = "nvim-treesitter/nvim-treesitter",
+    module = "nvim-gps",
+    config = function() require("nvim-gps").setup() end,
+  }
 
   use { "arkav/lualine-lsp-progress" }
 
@@ -126,12 +126,12 @@ local function plugins(use)
     requires = { "nvim-lua/plenary.nvim" }
   }
 
-  --use {
-  --  "akinsho/nvim-bufferline.lua",
-  --  event = "BufReadPre",
-  --  wants = "nvim-web-devicons",
-  --  config = function() require("config.bufferline").setup() end,
-  --}
+  use {
+    "akinsho/nvim-bufferline.lua",
+    event = "BufReadPre",
+    wants = "nvim-web-devicons",
+    config = function() require("config.bufferline").setup() end,
+  }
 
   --
   -- Coding
