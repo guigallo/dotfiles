@@ -7,6 +7,13 @@ api.nvim_set_keymap("", "<Space>", "<Nop>", { noremap = true, silent = true })
 g.mapleader = " "
 g.maplocalleader = " "
 
+-- globals
+g.python3_host_prog = '$HOME/.pyenv/versions/3.9.13/bin/python'
+-- g.node_host_prog = '$HOME/.volta/bin/neovim-node-host'
+g.loaded_perl_provider = 0
+g.loaded_ruby_provider = 0
+
+-- options
 opt.encoding = "UTF-8"
 opt.termguicolors = true -- Enable colors in terminal
 opt.hlsearch = true --Set highlight on search
