@@ -1,5 +1,6 @@
 [alias]
 	root = rev-parse --show-toplevel
+  graph = log --graph --pretty=oneline
 
 [code]
 	editor = nvim
