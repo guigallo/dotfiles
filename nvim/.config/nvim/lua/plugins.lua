@@ -49,40 +49,6 @@ local function plugins(use)
   --
 
   use {
-    "mhinz/vim-startify",
-    config = function()
-      vim.cmd([[
-        let g:startify_custom_header =
-              \ 'startify#center(startify#fortune#cowsay())'
-
-        " returns all modified files of the current git repo
-        " `2>/dev/null` makes the command fail quietly, so that when we are not
-        " in a git repo, the list will be empty
-        function! s:gitModified()
-            let files = systemlist('git ls-files -m 2>/dev/null')
-            return map(files, "{'line': v:val, 'path': v:val}")
-        endfunction
-
-        " same as above, but show untracked files, honouring .gitignore
-        function! s:gitUntracked()
-            let files = systemlist('git ls-files -o --exclude-standard 2>/dev/null')
-            return map(files, "{'line': v:val, 'path': v:val}")
-        endfunction
-
-        let g:startify_lists = [
-          \ { 'type': 'files',     'header': ['   MRU']            },
-          \ { 'type': 'dir',       'header': ['   MRU '. getcwd()] },
-          \ { 'type': 'sessions',  'header': ['   Sessions']       },
-          \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
-          \ { 'type': function('s:gitModified'),  'header': ['   git modified']},
-          \ { 'type': function('s:gitUntracked'), 'header': ['   git untracked']},
-          \ { 'type': 'commands',  'header': ['   Commands']       },
-        \ ]
-      ]])
-    end,
-  }
-
-  use {
     "arcticicestudio/nord-vim",
     config = function() vim.cmd "colorscheme nord" end
   }
@@ -256,13 +222,48 @@ local function plugins(use)
   }
 
   --
+  -- Vimspector
+  --
+  use {
+    "puremourning/vimspector",
+    cmd = { "VimspectorInstall", "VimspectorUpdate" },
+    fn = { "vimspector#Launch()", "vimspector#ToggleBreakpoint", "vimspector#Continue" },
+    config = function()
+      require("config.vimspector").setup()
+    end,
+  }
+
   -- DAP
   --
-  use { "mfussenegger/nvim-dap" }
+  -- use {
+  --   "mfussenegger/nvim-dap",
+  --   opt = true,
+  --   event = "BufReadPre",
+  --   module = { "dap" },
+  --   wants = {
+  --     "nvim-dap-virtual-text",
+  --     "DAPInstall.nvim",
+  --     "nvim-dap-ui",
+  --     "nvim-dap-python",
+  --     "which-key.nvim",
+  --   },
+  --   requires = {
+  --     "Pocco81/DAPInstall.nvim",
+  --     "theHamsta/nvim-dap-virtual-text",
+  --     "rcarriga/nvim-dap-ui",
+  --     "mfussenegger/nvim-dap-python",
+  --     "nvim-telescope/telescope-dap.nvim",
+  --     { "leoluz/nvim-dap-go", module = "dap-go" },
+  --     { "jbyuki/one-small-step-for-vimkind", module = "osv" },
+  --   },
+  --   config = function()
+  --     require("config.dap").setup()
+  --   end,
+  -- }
 
-  use { "nvim-telescope/telescope-dap.nvim" }
+  -- use { "nvim-telescope/telescope-dap.nvim" }
 
-  use { "mfussenegger/nvim-dap-python" }
+  -- use { "mfussenegger/nvim-dap-python" }
 
   --
   -- Sync
