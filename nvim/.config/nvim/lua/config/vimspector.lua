@@ -25,6 +25,7 @@ local vimspector_python = [[
 local function debuggers()
   vim.g.vimspector_install_gadgets = {
     "debugpy", -- Python
+    "vscode-node-debug2", -- Node
   }
 end
 

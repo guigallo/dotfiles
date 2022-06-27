@@ -62,4 +62,7 @@ setxkbmap -model 105 -layout us,us -variant ,intl -option grp:alt_shift_toggle
 export PYENV_ROOT=$HOME/.pyenv
 export PATH=$PATH:$PYENV_ROOT/versions/3.9.13/bin
 
+# bat
+export BAT_THEME='Nord'
+
 echo '[.profile] loaded'
