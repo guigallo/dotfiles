@@ -8,7 +8,7 @@
 /* Xft.hintstyle:  hintfull */
 
 ! -- Fonts -- !
-URxvt.font:xft:FiraCode Nerd Font:size=10
+URxvt.font:xft:Fira Code
 /* URxvt.depth:                      32 */
 /* URxvt*scrollBar:                  false */
 /* URxvt*mouseWheelScrollPage:       false */

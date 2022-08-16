@@ -42,7 +42,7 @@ function M.setup()
     -- experimental = { native_menu = false, ghost_text = false },
     snippet = {
       expand = function(args)
-        require("luasnip").lsp_expand(args.body)
+        luasnip.lsp_expand(args.body)
       end,
     },
     formatting = {
@@ -125,11 +125,11 @@ function M.setup()
     },
     sources = {
       { name = "nvim_lsp" },
-      -- { name = "treesitter" },
-      -- { name = "buffer" },
+      { name = "treesitter" },
+      { name = "buffer" },
       { name = "luasnip" },
-      -- { name = "nvim_lua" },
-      -- { name = "path" },
+      { name = "nvim_lua" },
+      { name = "path" },
     },
 
     window = {

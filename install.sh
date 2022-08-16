@@ -12,6 +12,7 @@ echo $foldern
 pushd $DOTFILES
 for folder in $(echo $STOW_FOLDERS | sed "s/,/ /g")
 do
+  echo $folder
   stow --adopt -Svt ~ $folder
 done
 popd

@@ -1,6 +1,6 @@
 [global]
 
-font = FiraCode Nerd Font
+font = Fira Code
 
 origin = bottom-center
 corner_radius = 6

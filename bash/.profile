@@ -49,11 +49,16 @@ alias doti3='n $HOME/.config/i3/config'
 alias dotvi='n $HOME/.config/nvim/init.vim'
 
 # android
+# export ANDROID_HOME=/opt/android-sdk
+# export ANDROID_SDK_ROOT=$HOME/Android/Sdk
 export ANDROID_HOME=$HOME/Android/Sdk
 export ANDROID_SDK_ROOT=$ANDROID_HOME
 export PATH=$PATH:$ANDROID_SDK_ROOT/emulator
 export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools
 export ANDROID_AVD_HOME=$HOME/.android/avd
+
+# flutter
+export CHROME_EXECUTABLE=google-chrome-stable
 
 # keymap
 setxkbmap -model 105 -layout us,us -variant ,intl -option grp:alt_shift_toggle
@@ -64,5 +69,12 @@ export PATH=$PATH:$PYENV_ROOT/versions/3.9.13/bin
 
 # bat
 export BAT_THEME='Nord'
+
+# sonar
+export SONAR_SCANNER_HOME="/opt/sonar-scanner"
+export PATH="${SONAR_SCANNER_HOME}/bin:${PATH}"
+
+# bin path
+export PATH="${PATH}:${HOME}/.local/bin"
 
 echo '[.profile] loaded'

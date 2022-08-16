@@ -14,6 +14,7 @@ g.loaded_perl_provider = 0
 g.loaded_ruby_provider = 0
 
 -- options
+opt.guifont = "FiraCode Nerd Font:h11"
 opt.encoding = "UTF-8"
 opt.termguicolors = true -- Enable colors in terminal
 opt.hlsearch = true --Set highlight on search
@@ -64,3 +65,7 @@ vim.cmd [[
     autocmd TextYankPost * silent! lua vim.highlight.on_yank()
   augroup end
 ]]
+
+-- Add vimspector
+vim.cmd [[packadd! vimspector]]
+

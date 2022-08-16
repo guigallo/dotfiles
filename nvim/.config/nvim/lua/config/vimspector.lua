@@ -26,6 +26,7 @@ local function debuggers()
   vim.g.vimspector_install_gadgets = {
     "debugpy", -- Python
     "vscode-node-debug2", -- Node
+    "debugger-for-chrome", -- Javascript
   }
 end
 
@@ -68,6 +69,7 @@ function M.toggle_human_mode()
 end
 
 function M.setup()
+  utils.info('test')
   vim.cmd [[packadd! vimspector]] -- Load vimspector
   debuggers() -- Configure debuggers
 end

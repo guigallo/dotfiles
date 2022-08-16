@@ -47,7 +47,6 @@ local function plugins(use)
   --
   -- User interface
   --
-
   use {
     "arcticicestudio/nord-vim",
     config = function() vim.cmd "colorscheme nord" end
@@ -56,9 +55,7 @@ local function plugins(use)
   use {
     "kyazdani42/nvim-web-devicons",
     module = "nvim-web-devicons",
-    config = function()
-      require("config.web-devicons").setup()
-    end,
+    config = function() require("config.web-devicons").setup() end,
   }
 
   use {
@@ -95,13 +92,6 @@ local function plugins(use)
     config = function() require("config.treesitter") end,
   }
 
-  use {
-    "SmiteshP/nvim-gps",
-    requires = "nvim-treesitter/nvim-treesitter",
-    module = "nvim-gps",
-    config = function() require("nvim-gps").setup() end,
-  }
-
   use { "arkav/lualine-lsp-progress" }
 
   use {
@@ -115,16 +105,6 @@ local function plugins(use)
     event = "VimEnter",
     config = function() require("config.whichkey").setup() end,
   }
-
-  -- use {
-  --   "stevearc/dressing.nvim",
-  --   event = "BufEnter",
-  --   config = function()
-  --     require("dressing").setup {
-  --       select = { backend = { "telescope", "fzf", "builtin" } },
-  --     }
-  --   end,
-  -- }
 
   use {
     "nvim-telescope/telescope.nvim",
@@ -152,8 +132,6 @@ local function plugins(use)
 
   use { "stylelint/stylelint" }
 
-  -- use { "rstacruz/vim-closer" }
-
   use {
     "prettier/vim-prettier",
     run = "yarn install --frozen-lockfile --production",
@@ -165,16 +143,16 @@ local function plugins(use)
     },
   }
 
-  -- use {
-  --   "windwp/nvim-autopairs",
-  --   wants = "nvim-treesitter",
-  --   module = { "nvim-autopairs.completion.cmp", "nvim-autopairs" },
-  --   config = function()
-  --     require("config.autopairs").setup()
-  --   end,
-  -- }
+  use {
+    "windwp/nvim-autopairs",
+    wants = "nvim-treesitter",
+    module = { "nvim-autopairs.completion.cmp", "nvim-autopairs" },
+    config = function() require("config.autopairs").setup() end,
+  }
 
   use { "fatih/vim-go", run = ":GoUpdateBinaries" }
+
+  use { "b0o/schemastore.nvim" }
 
   --
   -- LSP
@@ -199,11 +177,11 @@ local function plugins(use)
     config = function() require("config.cmp").setup() end,
     wants = { "LuaSnip" },
     requires = {
-      -- "hrsh7th/cmp-buffer",
-      -- "hrsh7th/cmp-path",
+      "hrsh7th/cmp-buffer",
+      "hrsh7th/cmp-path",
       -- "hrsh7th/cmp-nvim-lua",
-      -- "ray-x/cmp-treesitter",
-      -- "hrsh7th/cmp-cmdline",
+      "ray-x/cmp-treesitter",
+      "hrsh7th/cmp-cmdline",
       "saadparwaiz1/cmp_luasnip",
       "hrsh7th/cmp-nvim-lsp",
       {
@@ -227,10 +205,12 @@ local function plugins(use)
   use {
     "puremourning/vimspector",
     cmd = { "VimspectorInstall", "VimspectorUpdate" },
-    fn = { "vimspector#Launch()", "vimspector#ToggleBreakpoint", "vimspector#Continue" },
-    config = function()
-      require("config.vimspector").setup()
-    end,
+    fn = {
+      "vimspector#Launch()",
+      "vimspector#ToggleBreakpoint",
+      "vimspector#Continue",
+    },
+    config = function() require("config.vimspector").setup() end,
   }
 
   -- DAP
@@ -260,8 +240,6 @@ local function plugins(use)
   --     require("config.dap").setup()
   --   end,
   -- }
-
-  -- use { "nvim-telescope/telescope-dap.nvim" }
 
   -- use { "mfussenegger/nvim-dap-python" }
 

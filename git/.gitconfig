@@ -10,6 +10,7 @@
 
 [core]
   pager = delta
+  excludesFile = ~/.gitignore
 
 [delta]
   light = false
@@ -40,3 +41,5 @@
 [user]
 	email = guilherme.gg1@hotmail.com
 	name = guigallo
+[push]
+	autoSetupRemote = true
