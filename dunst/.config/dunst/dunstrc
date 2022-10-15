@@ -1,6 +1,6 @@
 [global]
 
-font = Fira Code
+font = FiraCode Nerd Font
 
 origin = bottom-center
 corner_radius = 6
@@ -137,7 +137,7 @@ horizontal_padding = 6
 #  * foreground: use the same color as the foreground;
 #  * frame: use the same color as the frame;
 #  * anything else will be interpreted as a X color.
-separator_color = frame
+# separator_color = frame
 
 # Print a notification on startup.
 # This is mainly for error detection, since dbus (re-)starts dunst
@@ -158,7 +158,7 @@ max_icon_size = 80
 icon_path = /usr/share/icons/Paper/16x16/mimetypes/:/usr/share/icons/Paper/48x48/status/:/usr/share/icons/Paper/16x16/devices/:/usr/share/icons/Paper/48x48/notifications/:/usr/share/icons/Paper/48x48/emblems/
 
 frame_width = 3
-frame_color = "#A3BE8C"
+# frame_color = "#A3BE8C"
 
 # Shortcuts are specified as [modifier+][modifier+]...key
 # Available modifiers are "ctrl", "mod1" (the alt-key), "mod2",
@@ -179,23 +179,35 @@ close = ctrl+space
 # Context menu.
 # context = ctrl+shift+period
 
+# frame_color = "#A3BE8C"
+# separator_color = frame
+frame_color = "#89B4FA"
+separator_color= frame
+
 [urgency_low]
 # IMPORTANT: colors have to be defined in quotation marks.
 # Otherwise the "#" and following would be interpreted as a comment.
-background = "#3b4252"
-foreground = "#eceff4"
+# background = "#3b4252"
+# foreground = "#eceff4"
+background = "#1E1E2E"
+foreground = "#CDD6F4"
 frame_color = "#4c566a"
 timeout = 10
 
 [urgency_normal]
-background = "#3b4252"
-foreground = "#eceff4"
+# background = "#3b4252"
+# foreground = "#eceff4"
+background = "#1E1E2E"
+foreground = "#CDD6F4"
 timeout = 10
 
 [urgency_critical]
-background = "#3b4252"
-foreground = "#eceff4"
-frame_color = "#bf616a"
+background = "#1E1E2E"
+foreground = "#CDD6F4"
+frame_color = "#FAB387"
+# background = "#3b4252"
+# foreground = "#eceff4"
+# frame_color = "#bf616a"
 timeout = 0
 
 #[urgency_low]

@@ -37,7 +37,7 @@ function killbyport() {
 }
 
 # configs
-export EDITOR='nvim'
+export EDITOR='neovide'
 
 # broot
 source /home/guigallo/.config/broot/launcher/bash/br
@@ -53,8 +53,10 @@ alias dotvi='n $HOME/.config/nvim/init.vim'
 # export ANDROID_SDK_ROOT=$HOME/Android/Sdk
 export ANDROID_HOME=$HOME/Android/Sdk
 export ANDROID_SDK_ROOT=$ANDROID_HOME
-export PATH=$PATH:$ANDROID_SDK_ROOT/emulator
-export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/tools/bin
+export PATH=$PATH:$ANDROID_HOME/platform-tools
 export ANDROID_AVD_HOME=$HOME/.android/avd
 
 # flutter
@@ -68,7 +70,7 @@ export PYENV_ROOT=$HOME/.pyenv
 export PATH=$PATH:$PYENV_ROOT/versions/3.9.13/bin
 
 # bat
-export BAT_THEME='Nord'
+export BAT_THEME='Catppuccin-mocha'
 
 # sonar
 export SONAR_SCANNER_HOME="/opt/sonar-scanner"
@@ -76,5 +78,13 @@ export PATH="${SONAR_SCANNER_HOME}/bin:${PATH}"
 
 # bin path
 export PATH="${PATH}:${HOME}/.local/bin"
+
+# rust
+export PATH="${PATH}:${HOME}/.cargo/bin"
+
+# Docker
+# export DOCKER_HOST=$(docker context inspect --format '{{.Endpoints.docker.Host}}')
+# export UID=$(id -u)
+# export GID=$(id -g)
 
 echo '[.profile] loaded'

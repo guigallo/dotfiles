@@ -30,7 +30,7 @@
   diffFilter = delta --color-only
 
 [merge]
-  conflictstyle = diff3
+  conflictstyle = merge
 
 [pull]
 	rebase = true

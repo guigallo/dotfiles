@@ -91,7 +91,7 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # TODO
 # Screenshot
-bindsym Print exec maim -s --format png | xclip -selection clipboard -t image/png -i
+# bindsym Print exec maim -s --format png | xclip -selection clipboard -t image/png -i
 bindsym $mod+Print exec maim --select | tee ~/Pictures/$(date +%s).png | xclip -sel c -t image/png
 
 # TODO
@@ -171,8 +171,12 @@ bindsym $mod+Mod4+9 move container to workspace number $ws9
 ################################################################################
 
 # Start dmenu
-bindsym $mod+d exec --no-startup-id rofi -show drun
-bindsym $mod+g exec --no-startup-id rofi -show window
+bindsym $mod+d exec --no-startup-id sh $HOME/.config/rofi/bin/launcher
+bindsym $mod+g exec --no-startup-id sh $HOME/.config/rofi/bin/runner
+bindsym $mod+o exec --no-startup-id sh $HOME/.config/rofi/bin/powermenu
+bindsym $mod+p exec --no-startup-id sh $HOME/.config/rofi/bin/screenshot
+# bindsym $mod+d exec --no-startup-id rofi -show drun
+# bindsym $mod+g exec --no-startup-id rofi -show window
 
 # Exit i3 (logs you out of your X session)
 bindsym $mod+Mod4+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
