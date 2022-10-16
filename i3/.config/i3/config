@@ -41,7 +41,7 @@ set $ws9 "9"
 # 2.Shortcuts and execs
 ################################################################################
 
-bindsym $mod+Return exec alacritty;focus
+bindsym $mod+Return exec kitty;focus
 
 # Lock i3
 bindsym $mod+Mod4+q exec i3lock-wrapper
@@ -109,6 +109,7 @@ for_window [class="Nautilus"] floating enable
 for_window [class="Toggl Desktop"] floating enable
 for_window [class="solanum"] floating enable
 for_window [class="obsidian"] floating enable
+for_window [class="neovide"] floating enable
 
 ################################################################################
 # 4.Movements
@@ -175,27 +176,6 @@ bindsym $mod+d exec --no-startup-id sh $HOME/.config/rofi/bin/launcher
 bindsym $mod+g exec --no-startup-id sh $HOME/.config/rofi/bin/runner
 bindsym $mod+o exec --no-startup-id sh $HOME/.config/rofi/bin/powermenu
 bindsym $mod+p exec --no-startup-id sh $HOME/.config/rofi/bin/screenshot
-# bindsym $mod+d exec --no-startup-id rofi -show drun
-# bindsym $mod+g exec --no-startup-id rofi -show window
-
-# Exit i3 (logs you out of your X session)
-bindsym $mod+Mod4+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
-
-# Exit script
-bindsym $mod+0 mode "$mode_system"
-set $mode_system System loc(k), (l)ogout, (r)eboot, (s)hutdown
-mode "$mode_system" {
-    bindsym k exec --no-startup-id ~/.config/i3/scripts/i3exit.sh lock, mode "default"
-    bindsym l exec --no-startup-id ~/.config/i3/scripts/i3exit.sh logout, mode "default"
-    # bindsym u exec --no-startup-id ~/.config/i3/scripts/i3exit.sh suspend, mode "default"
-    # bindsym h exec --no-startup-id ~/.config/i3/scripts/i3exit.sh hibernate, mode "default"
-    bindsym r exec --no-startup-id ~/.config/i3/scripts/i3exit.sh reboot, mode "default"
-    bindsym s exec --no-startup-id ~/.config/i3/scripts/i3exit.sh shutdown, mode "default"
-
-    # Back to normal: Enter or Escape
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
 
 # Resize window
 bindsym $mod+r mode "resize"
@@ -268,7 +248,6 @@ bindsym $mod+c focus child
 for_window [class="^.*"] border pixel 1
 gaps inner 8
 gaps outer 0
-gaps bottom 16
 
 # smart_gaps on
 # smart_borders on
