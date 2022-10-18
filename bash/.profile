@@ -86,5 +86,3 @@ export PATH="${PATH}:${HOME}/.cargo/bin"
 # export DOCKER_HOST=$(docker context inspect --format '{{.Endpoints.docker.Host}}')
 # export UID=$(id -u)
 # export GID=$(id -g)
-
-echo '[.profile] loaded'
