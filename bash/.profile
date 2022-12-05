@@ -4,9 +4,13 @@ alias ..="cd .."
 alias vim="nvim"
 alias vi="nvim"
 alias oldvim="/usr/bin/vim"
-alias ll='ls -alhF'
-alias la='ls -A'
-alias l='ls -CF'
+# alias ll='ls -alhF'
+# alias la='ls -A'
+# alias l='ls -CF'
+alias oldls='/usr/bin/ls'
+alias ls='exa'
+alias l='ls'
+alias ll='exa --long'
 alias cdroot='cd $(git root)'
 alias ka='k -Ah'
 
@@ -19,8 +23,8 @@ export LESS='-R --use-color -Dd+r$Du+b'
 export MANPAGER="less -R --use-color -Dd+r -Du+b"
 
 # volta
-export VOLTA_HOME="$HOME/.volta"
-export PATH="$VOLTA_HOME/bin:$PATH"
+# export VOLTA_HOME="$HOME/.volta"
+# export PATH="$VOLTA_HOME/bin:$PATH"
 
 # go
 export PATH="$HOME/go/bin:$PATH"
@@ -38,6 +42,7 @@ function killbyport() {
 
 # configs
 export EDITOR='neovide'
+export NEOVIDE_MULTIGRID=true
 
 # broot
 source /home/guigallo/.config/broot/launcher/bash/br
@@ -86,3 +91,12 @@ export PATH="${PATH}:${HOME}/.cargo/bin"
 # export DOCKER_HOST=$(docker context inspect --format '{{.Endpoints.docker.Host}}')
 # export UID=$(id -u)
 # export GID=$(id -g)
+
+# Alias helpers
+export YSU_HARDCORE=0
+
+# Pluigns
+source /usr/share/zsh/plugins/zsh-you-should-use/you-should-use.plugin.zsh
+
+ZVM_VI_INSERT_ESCAPE_BINDKEY=jk
+source /usr/share/zsh/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh
