@@ -81,18 +81,10 @@ plugins=(
   git
   tmux
   zsh-interactive-cd
-
-  # git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
-  zsh-autosuggestions
-
-  # git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
-  # zsh-syntax-highlighting
-
-  # git clone https://github.com/supercrabtree/k $ZSH_CUSTOM/plugins/k
+  zsh-npm-scripts-autocomplete
+  zsh-autosuggestions  # zsh-syntax-highlighting
   k
-
-  # git clone https://github.com/jeffreytse/zsh-vi-mode $ZSH_CUSTOM/plugins/zsh-vi-mode
-  # zsh-vi-mode
+  zsh-vi-mode
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -128,4 +120,8 @@ source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # profile
+
+source /home/guigallo/.config/broot/launcher/bash/br
+source /usr/share/nvm/init-nvm.sh
+
 source ~/.profile
