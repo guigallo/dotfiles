@@ -110,6 +110,21 @@ for_window [class="Toggl Desktop"] floating enable
 for_window [class="solanum"] floating enable
 for_window [class="obsidian"] floating enable
 for_window [class="neovide"] floating enable
+for_window [class="kitty"] floating enable
+
+# for kde env
+for_window [title="Desktop — Plasma"] kill, floating enable, border none
+for_window [class="plasmashell"] floating enable
+for_window [class="Plasma"] floating enable, border none
+for_window [title="plasma-desktop"] floating enable, border none
+for_window [title="win7"] floating enable, border none
+for_window [class="krunner"] floating enable, border none
+for_window [class="Kmix"] floating enable, border none
+for_window [class="Klipper"] floating enable, border none
+for_window [class="Plasmoidviewer"] floating enable, border none
+for_window [class="(?i)*nextcloud*"] floating disable
+for_window [class="plasmashell" window_type="notification"] floating enable, border none, move right 700px, move down 450px
+no_focus [class="plasmashell" window_type="notification"] 
 
 ################################################################################
 # 4.Movements
@@ -246,8 +261,9 @@ bindsym $mod+c focus child
 ################################################################################
 
 for_window [class="^.*"] border pixel 1
-gaps inner 8
+gaps inner 1
 gaps outer 0
+gaps top 6
 
 # smart_gaps on
 # smart_borders on
