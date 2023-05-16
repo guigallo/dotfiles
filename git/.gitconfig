@@ -52,3 +52,5 @@
 	name = guigallo
 [push]
 	autoSetupRemote = true
+[commit]
+	template = /home/guigallo/.gitmessage

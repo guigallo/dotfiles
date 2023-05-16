@@ -13,6 +13,7 @@ alias l='ls'
 alias ll='exa --long'
 alias cdroot='cd $(git root)'
 alias ka='k -Ah'
+alias td='todo.sh'
 
 # colors
 alias ls='ls --color=auto'
@@ -26,6 +27,9 @@ export MANPAGER="less -R --use-color -Dd+r -Du+b"
 # export VOLTA_HOME="$HOME/.volta"
 # export PATH="$VOLTA_HOME/bin:$PATH"
 
+# node
+source /usr/share/nvm/init-nvm.sh
+
 # go
 export PATH="$HOME/go/bin:$PATH"
 
@@ -33,7 +37,13 @@ export PATH="$HOME/go/bin:$PATH"
 export GITHUB_TOKEN=""
 alias gitlogin='eval "$(ssh-agent -s)" && ssh-add ~/.ssh/github_id_ed25519'
 alias gitundolastlocal="git reset HEAD~"
-alias gitcleanbranchs='git branch --merged | egrep -v "(^\*|main|master|dev)" | xargs git branch -d'
+# https://stackoverflow.com/questions/7726949/remove-tracking-branches-no-longer-on-remote
+# alias gitcleanbranchs=git fetch -p && for branch in $(git for-each-ref --format '%(refname) %(upstream:track)' refs/heads | awk '$2 == "[gone]" {sub("refs/heads/", "", $1); print $1}'); do git branch -D $branch; done
+
+# openai chatgpt
+export OPENAI_KEY="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"
+export OPENAI_API_KEY="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"
+# export NOMIC_API_KEY="jpbPqWwLAwJzHXKLDpzygIZAdoQKsC5Wa5G8dDKctGkrn"
 
 # helpers
 function killbyport() {
@@ -41,7 +51,7 @@ function killbyport() {
 }
 
 # configs
-export EDITOR='neovide'
+export EDITOR='nvim'
 export NEOVIDE_MULTIGRID=true
 
 # broot
@@ -63,6 +73,10 @@ export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 export ANDROID_AVD_HOME=$HOME/.android/avd
+
+# java
+export JAVA_HOME=/usr/lib/jvm/$(archlinux-java get)
+export PATH=$PATH:$JAVA_HOME/bin
 
 # flutter
 export CHROME_EXECUTABLE=google-chrome-stable
