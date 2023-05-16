@@ -79,10 +79,11 @@ ZSH_THEME="robbyrussell"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
-  tmux
-  zsh-interactive-cd
+  # tmux
+  # zsh-interactive-cd
   zsh-npm-scripts-autocomplete
-  zsh-autosuggestions  # zsh-syntax-highlighting
+  zsh-autosuggestions
+  # zsh-syntax-highlighting
   k
   zsh-vi-mode
 )
@@ -122,6 +123,5 @@ source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 # profile
 
 source /home/guigallo/.config/broot/launcher/bash/br
-source /usr/share/nvm/init-nvm.sh
 
 source ~/.profile
