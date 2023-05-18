@@ -1,11 +1,11 @@
 #!/bin/bash
 
-source ~/dotfiles/terminal/home/.profile
+source ~/dotfiles/stow/home/.profile
 
 echo "[LINKING_DOTFILES]"
-stow --verbose --adopt --target="$HOME" home
+stow --verbose --adopt --target="$HOME" stow/home
 echo "[LINKING_XDG_CONFIG]"
-stow --verbose --adopt --target="$XDG_CONFIG_HOME" config
+stow --verbose --adopt --target="$XDG_CONFIG_HOME" stow/config
 
 exit 0
 echo "[UPDATING_SYSTEM]"
