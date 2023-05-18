@@ -1,15 +1,17 @@
 #!/bin/bash
+export DOTFILES_INSTALLING=true
 
 source ~/dotfiles/stow/home/.profile
 
+pushd stow
 echo "[LINKING_DOTFILES]"
-stow --verbose --adopt --target="$HOME" stow/home
+stow --verbose --adopt --target="$HOME" home
 echo "[LINKING_XDG_CONFIG]"
-stow --verbose --adopt --target="$XDG_CONFIG_HOME" stow/config
+stow --verbose --adopt --target="$XDG_CONFIG_HOME" config
+popd
 
-exit 0
 echo "[UPDATING_SYSTEM]"
-sudo pacman -Syu
+# sudo pacman -Syu
 
 dependencies=(
 	"git"
@@ -17,21 +19,18 @@ dependencies=(
 	"tmux"
 	"zsh"
 	"tldr"
+	"fzf"
+	"fd"
 	"ttf-jetbrains-mono-nerd"
 )
 dependencies_names="${dependencies[@]}"
 echo "[INSTALLING_DEPENDENCIES]: $dependencies_names"
-sudo pacman -Sy $dependencies_names
+# sudo pacman -Sy $dependencies_names
 
-ZSH_PLUGINS_PATH=$XDG_CONFIG_HOME/.oh-my-zsh/custom/plugins
-echo "[DOWNLOAD_GIT_DEPENDENCIES]: ${ZSH_PLUGINS_PATH}"
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_PLUGINS_PATH}/zsh-autosuggestions
-git clone https://github.com/MichaelAquilina/zsh-you-should-use.git $ZSH_PLUGINS_PATH/zsh-you-should-use
-git clone https://github.com/jeffreytse/zsh-vi-mode $ZSH_PLUGINS_PATH/zsh-vi-mode
-
-to_shell=$(which zsh)
-echo "[CHANGING_SHELL]: $to_shell"
-sudo chsh -s $to_shell
+TMUX_TPM_PATH=$XDG_CONFIG_HOME/tmux_tpm
+echo "[DOWNLOAD_TMUX_DEPENDENCIES]: ${TMUX_TPM_PATH}"
+git clone https://github.com/tmux-plugins/tpm $TMUX_TPM_PATH
+$TMUX_TPM_PATH/scripts/install_plugins.sh
 
 if ! command -v nvm &>/dev/null; then
 	echo "[INSTALLING_DEPENDENCIES]: nvm"
@@ -48,9 +47,27 @@ git clone --depth 1 https://github.com/AstroNvim/AstroNvim $XDG_CONFIG_HOME/nvim
 nvim --headless -c 'quitall'
 
 # this always should be at the bottom because install script open new shell
-if ! command -v omz &>/dev/null; then
+OMZ_PATH=$XDG_CONFIG_HOME/.oh-my-zsh
+if ! omz -v omz &>/dev/null; then
 	echo "[INSTALLING_DEPENDENCIES]: on-my-zsh"
-	sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+	rm -rf $OMZ_PATH
+	sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 else
-	echo "[DEPENDENCIES_INSTALLED]: on-my-zsh"
+	echo "[DEPENDENCIES_ALREADY_INSTALLED]: on-my-zsh"
 fi
+
+ZSH_PLUGINS_PATH=$OMZ_PATH/custom/plugins
+mkdir -p $ZSH_PLUGINS_PATH
+echo "[DOWNLOAD_ZSH_DEPENDENCIES]: ${ZSH_PLUGINS_PATH}"
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_PLUGINS_PATH}/zsh-autosuggestions
+git clone https://github.com/MichaelAquilina/zsh-you-should-use.git $ZSH_PLUGINS_PATH/zsh-you-should-use
+git clone https://github.com/jeffreytse/zsh-vi-mode $ZSH_PLUGINS_PATH/zsh-vi-mode
+
+pushd stow
+echo "[LINKING_ZSHRC]"
+rm ~/.zshrc
+stow --verbose --target="$HOME" zsh
+popd
+
+pkill -USR1 kitty
+zsh

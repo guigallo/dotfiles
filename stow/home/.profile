@@ -76,7 +76,6 @@ export XDG_DATA_HOME=$XDG_USER/data     # analogous /usr/share. default $HOME/.l
 export XDG_STATE_HOME=$XDG_USER/state   # analogous to /var/lib. default $HOME/.local/state
 
 # custom paths
-export ZSH="$XDG_CONFIG_HOME/.oh-my-zsh"
 export KITTY_CONFIG_DIRECTORY="$XDG_CONFIG_HOME/kitty"
 
 # Plugins config
@@ -93,14 +92,10 @@ export NVM_DIR="$HOME/xdg/config/nvm"
 # theme
 source ~/dotfiles/stow/theme/theme
 
-# tmux
-#
-[ -z "$TMUX" ] && { tmux attach || exec tmux new-session && exit; }
-# tmux attach || tmux new-session
-# if ! tmux has-session >/dev/null 2>&1; then
-# 	exit
-# fi
-# tmux "$@"
-# if ! tmux has-session >/dev/null 2>&1; then
-# 	exit
-# fi
+if [ -n "$DOTFILES_INSTALLING" ] && [ "$DOTFILES_INSTALLING" = true ]; then
+	# installing only
+	unset DOTFILES_INSTALLING
+	unset TMUX_TPM_PATH
+else
+	[ -z "$TMUX" ] && { tmux attach || exec tmux new-session && exit; }
+fi
