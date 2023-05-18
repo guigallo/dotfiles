@@ -17,7 +17,7 @@ export ZSH="$HOME/xdg/config/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+# ZSH_THEME="robbyrussell"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -79,7 +79,17 @@ zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(
+  aliases
+  battery
+  command-not-found
+  git
+
+  # custom plugins
+  zsh-autosuggestions
+  zsh-vi-mode
+  zsh-you-should-use
+)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -110,8 +120,6 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 source $HOME/.profile
-fpath=($fpath "/home/guigallo/.zfunctions")
-
 fpath=($fpath "/home/guigallo/.zfunctions")
 
 # Set typewritten ZSH as a prompt

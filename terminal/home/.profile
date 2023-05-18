@@ -33,7 +33,7 @@ export GITHUB_TOKEN=""
 
 # helpers
 function killbyport() {
-  kill $(lsof -t -i:$1)
+	kill $(lsof -t -i:$1)
 }
 
 # configs
@@ -58,33 +58,49 @@ export CHROME_EXECUTABLE=google-chrome-stable
 # keymap
 # setxkbmap -model 105 -layout us,us -variant ,intl -option grp:alt_shift_toggle
 
-# bat
-export BAT_THEME='Catppuccin-mocha'
-
 # bin path
 export PATH="${PATH}:${HOME}/.local/bin"
 
 # Languages
 export PATH="${PATH}:${HOME}/.cargo/bin"
 
-# Pluigns
-export YSU_HARDCORE=0
-ZVM_VI_INSERT_ESCAPE_BINDKEY=jk
+# zsh pluigns
 # source /usr/share/zsh/plugins/zsh-you-should-use/you-should-use.plugin.zsh
 # source /usr/share/zsh/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 
 # XGD Base Directory
 XDG_USER=$HOME/xdg
 export XDG_CONFIG_HOME=$XDG_USER/config # analogous /etc. default $HOME/.config
-export XDG_CACHE_HOME=$XDG_USER/cache # analogous /var/cache. default $HOME/.cache
-export XDG_DATA_HOME=$XDG_USER/data # analogous /usr/share. default $HOME/.local/share
-export XDG_STATE_HOME=$XDG_USER/state # analogous to /var/lib. default $HOME/.local/state
+export XDG_CACHE_HOME=$XDG_USER/cache   # analogous /var/cache. default $HOME/.cache
+export XDG_DATA_HOME=$XDG_USER/data     # analogous /usr/share. default $HOME/.local/share
+export XDG_STATE_HOME=$XDG_USER/state   # analogous to /var/lib. default $HOME/.local/state
 
 # custom paths
 export ZSH="$XDG_CONFIG_HOME/.oh-my-zsh"
 export KITTY_CONFIG_DIRECTORY="$XDG_CONFIG_HOME/kitty"
 
+# Plugins config
+export YSU_HARDCORE=0
+export ZSH_TMUX_AUTOSTART=true
+export ZVM_VI_INSERT_ESCAPE_BINDKEY=jk
+export ZSH_TMUX_CONFIG=$XDG_CONFIG_HOME/tmux/tmux.conf
+
 # nvm
 export NVM_DIR="$HOME/xdg/config/nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
+
+# theme
+source ~/dotfiles/terminal/theme/theme
+
+# tmux
+#
+[ -z "$TMUX" ] && { tmux attach || exec tmux new-session && exit; }
+# tmux attach || tmux new-session
+# if ! tmux has-session >/dev/null 2>&1; then
+# 	exit
+# fi
+# tmux "$@"
+# if ! tmux has-session >/dev/null 2>&1; then
+# 	exit
+# fi

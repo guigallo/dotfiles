@@ -96,8 +96,8 @@ bindsym $mod+Print exec maim --select | tee ~/Pictures/$(date +%s).png | xclip -
 
 # TODO
 # If you want transparency on non-focused windows, ...
-exec_always --no-startup-id picom --experimental-backends --config ~/.config/picom/picom.conf
-exec_always --no-startup-id nitrogen --restore
+# exec_always --no-startup-id picom --experimental-backends --config ~/.config/picom/picom.conf
+# exec_always --no-startup-id nitrogen --restore
 # exec_always --no-startup-id ~/.config/i3/scripts/mouse.sh
 
 ################################################################################
@@ -110,7 +110,7 @@ for_window [class="Toggl Desktop"] floating enable
 for_window [class="solanum"] floating enable
 for_window [class="obsidian"] floating enable
 for_window [class="neovide"] floating enable
-for_window [class="kitty"] floating enable
+# for_window [class="kitty"] floating enable
 
 # for kde env
 for_window [title="Desktop — Plasma"] kill, floating enable, border none
@@ -269,8 +269,8 @@ bindsym $mod+c focus child
 
 for_window [class="^.*"] border pixel 1
 gaps inner 1
-gaps outer 0
-gaps top 6
+# gaps outer 0
+# gaps top 0
 
 # smart_gaps on
 # smart_borders on
