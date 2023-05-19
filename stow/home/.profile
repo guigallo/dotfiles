@@ -20,6 +20,9 @@ alias ls='ls --color=auto'
 alias diff='diff --color=auto'
 alias grep='grep --color=auto'
 alias ip='ip -color=auto'
+alias i3=startx $(which i3)
+alias t2='tree -a -L2'
+alias t3='tree -a -L3'
 export LESS='-R --use-color -Dd+r$Du+b'
 export MANPAGER="less -R --use-color -Dd+r -Du+b"
 
@@ -74,6 +77,7 @@ export XDG_CONFIG_HOME=$XDG_USER/config # analogous /etc. default $HOME/.config
 export XDG_CACHE_HOME=$XDG_USER/cache   # analogous /var/cache. default $HOME/.cache
 export XDG_DATA_HOME=$XDG_USER/data     # analogous /usr/share. default $HOME/.local/share
 export XDG_STATE_HOME=$XDG_USER/state   # analogous to /var/lib. default $HOME/.local/state
+export ZDOTDIR="$XDG_CONFIG_HOME"/zsh
 
 # custom paths
 export KITTY_CONFIG_DIRECTORY="$XDG_CONFIG_HOME/kitty"
@@ -90,6 +94,7 @@ export NVM_DIR="$HOME/xdg/config/nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
 
 # theme
+export TYPEWRITTEN_PROMPT_LAYOUT="pure_verbose"
 source ~/dotfiles/stow/theme/theme
 
 if [ -n "$DOTFILES_INSTALLING" ] && [ "$DOTFILES_INSTALLING" = true ]; then
@@ -97,5 +102,5 @@ if [ -n "$DOTFILES_INSTALLING" ] && [ "$DOTFILES_INSTALLING" = true ]; then
 	unset DOTFILES_INSTALLING
 	unset TMUX_TPM_PATH
 else
-	[ -z "$TMUX" ] && { tmux attach || exec tmux new-session && exit; }
+	# [ -z "$TMUX" ] && { tmux attach || exec tmux new-session && exit; }
 fi

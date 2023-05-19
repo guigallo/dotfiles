@@ -66,6 +66,7 @@ git clone https://github.com/jeffreytse/zsh-vi-mode $ZSH_PLUGINS_PATH/zsh-vi-mod
 pushd stow
 echo "[LINKING_ZSHRC]"
 rm ~/.zshrc
+# stow --verbose --target="$XDG_CONFIG_HOME" zsh
 stow --verbose --target="$HOME" zsh
 popd
 
