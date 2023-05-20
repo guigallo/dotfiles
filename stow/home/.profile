@@ -1,5 +1,6 @@
 # alias
 alias n=nvim
+alias t=tmux
 alias ..="cd .."
 alias vim="nvim"
 alias vi="nvim"
