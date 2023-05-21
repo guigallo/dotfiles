@@ -1,5 +1,7 @@
+echo '[.zshrc]'
+
 # Lines configured by zsh-newuser-install
-HISTFILE=~/.histfile
+export HISTFILE=~/xdg/state/zsh/histfile
 HISTSIZE=10000
 SAVEHIST=10000
 setopt notify
@@ -120,8 +122,9 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 source $HOME/.profile
-# fpath=($fpath "/home/guigallo/.zfunctions")
+fpath=($fpath "/home/guigallo/xdg/config/zsh/.zfunctions")
 
 # Set typewritten ZSH as a prompt
 autoload -U promptinit; promptinit
 prompt typewritten
+

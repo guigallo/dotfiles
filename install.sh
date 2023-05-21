@@ -5,9 +5,9 @@ source ~/dotfiles/stow/home/.profile
 
 pushd stow
 echo "[LINKING_DOTFILES]"
-stow --verbose --adopt --target="$HOME" home
+stow --verbose --target="$HOME" home
 echo "[LINKING_XDG_CONFIG]"
-stow --verbose --adopt --target="$XDG_CONFIG_HOME" config
+stow --verbose --target="$XDG_CONFIG_HOME" config
 popd
 
 echo "[UPDATING_SYSTEM]"
@@ -65,10 +65,10 @@ git clone https://github.com/jeffreytse/zsh-vi-mode $ZSH_PLUGINS_PATH/zsh-vi-mod
 
 pushd stow
 echo "[LINKING_ZSHRC]"
-rm ~/.zshrc
-# stow --verbose --target="$XDG_CONFIG_HOME" zsh
-stow --verbose --target="$HOME" zsh
+mkdir -p $XDG_CONFIG_HOME/zsh
+rm $XDG_CONFIG_HOME/zsh/.zshrc
+stow --verbose --target="$XDG_CONFIG_HOME"/zsh zsh
 popd
 
-pkill -USR1 kitty
-zsh
+# pkill -USR1 kitty
+# zsh

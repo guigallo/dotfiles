@@ -1,3 +1,5 @@
+echo '[.profile]'
+
 # alias
 alias n=nvim
 alias t=tmux
@@ -9,7 +11,7 @@ alias oldvim="/usr/bin/vim"
 # alias la='ls -A'
 # alias l='ls -CF'
 alias oldls='/usr/bin/ls'
-alias ls='exa'
+alias ls='ls -lhF'
 alias l='ls -la'
 alias ll='exa --long'
 alias cdroot='cd $(git root)'
@@ -22,8 +24,8 @@ alias diff='diff --color=auto'
 alias grep='grep --color=auto'
 alias ip='ip -color=auto'
 alias i3=startx $(which i3)
-alias t2='tree -a -L2'
-alias t3='tree -a -L3'
+alias t2='tree -a -L 2'
+alias t3='tree -a -L 3'
 export LESS='-R --use-color -Dd+r$Du+b'
 export MANPAGER="less -R --use-color -Dd+r -Du+b"
 
@@ -78,7 +80,9 @@ export XDG_CONFIG_HOME=$XDG_USER/config # analogous /etc. default $HOME/.config
 export XDG_CACHE_HOME=$XDG_USER/cache   # analogous /var/cache. default $HOME/.cache
 export XDG_DATA_HOME=$XDG_USER/data     # analogous /usr/share. default $HOME/.local/share
 export XDG_STATE_HOME=$XDG_USER/state   # analogous to /var/lib. default $HOME/.local/state
-export ZDOTDIR="$XDG_CONFIG_HOME"/zsh
+export ZDOTDIR=$XDG_CONFIG_HOME/zsh
+export XAUTHORITY=$XDG_RUNTIME_DIR/Xauthority
+alias yarn=yarn --user-yarn $XDG_CONFIG_HOME/yarn/config
 
 # custom paths
 export KITTY_CONFIG_DIRECTORY="$XDG_CONFIG_HOME/kitty"
