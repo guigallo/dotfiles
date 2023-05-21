@@ -38,7 +38,6 @@ if ! command -v nvm &>/dev/null; then
 	nvm install --lts
 	nvm use --lts
 	npm install --global yarn
-	yarn global add typewritten
 else
 	echo "[DEPENDENCIES_INSTALLED]: nvm"
 fi
