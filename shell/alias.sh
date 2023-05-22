@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo '[.alias]'
+# echo '[alias.sh]'
 
 alias n=nvim
 alias t=tmux

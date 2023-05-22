@@ -1,11 +1,11 @@
 #!/bin/bash
 
-echo '[index.sh]'
+# echo '[index.sh]'
 
-source ./alias.sh
-source ./env.sh
-source ./dev.sh
-source ./theme.sh
+source "$HOME/dotfiles/shell/alias.sh"
+source "$HOME/dotfiles/shell/env.sh"
+source "$HOME/dotfiles/shell/dev.sh"
+source "$HOME/dotfiles/shell/theme.sh"
 
 if [ -n "$DOTFILES_INSTALLING" ] && [ "$DOTFILES_INSTALLING" = true ]; then
 	# installing only

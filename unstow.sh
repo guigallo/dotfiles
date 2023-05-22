@@ -10,8 +10,8 @@ echo -e "[${Green}UNSTOWING_DOTFILES${Color_Off}]: home"
 stow --verbose --delete --target="$HOME" home
 
 echo -e "[${Green}UNSTOWING_DOTFILES${Color_Off}]: zsh"
-stow --verbose --delete --target="$XDG_CONFIG_HOME" zsh
+stow --verbose --delete --target="$XDG_CONFIG_HOME/zsh" zsh
+popd
 
 echo -e "[${Green}UNSTOWING_DOTFILES${Color_Off}]: xdg"
 stow --verbose --delete --target="$XDG_CONFIG_HOME" xdg
-popd

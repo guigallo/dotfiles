@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo '[dev.sh]'
+# echo '[dev.sh]'
 
 # git
 export GITHUB_TOKEN=""

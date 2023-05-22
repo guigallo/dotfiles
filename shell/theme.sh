@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo '[theme.sh]'
+# echo '[theme.sh]'
 
 export TYPEWRITTEN_PROMPT_LAYOUT="pure_verbose"
 

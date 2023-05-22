@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo '[env.sh]'
+# echo '[env.sh]'
 
 # XGD Base Directory
 export XDG_USER=$HOME/xdg
