@@ -1,6 +1,6 @@
-echo '[.bashrc]'
-
 #!/bin/bash
+
+echo '[.bashrc]'
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
@@ -8,7 +8,7 @@ echo '[.bashrc]'
 PS1='[\u@\h \W]\$ '
 
 # profile
-source ~/.profile
+source ${HOME}/shell/index.sh
 
 # zsh
 exec zsh

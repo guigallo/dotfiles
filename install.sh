@@ -1,17 +1,22 @@
 #!/bin/bash
+
+Green='\033[0;32m'
+Color_Off='\033[0m'
+
 export DOTFILES_INSTALLING=true
 
-source ~/dotfiles/stow/home/.profile
+source "${HOME}"/dotfiles/shell/env.sh
 
-pushd stow
-echo "[LINKING_DOTFILES]"
+pushd shell || exit
+echo -e "[${Green}STOWING_DOTFILES${Color_Off}]"
 stow --verbose --target="$HOME" home
-echo "[LINKING_XDG_CONFIG]"
-stow --verbose --target="$XDG_CONFIG_HOME" config
-popd
+popd || exit
 
-echo "[UPDATING_SYSTEM]"
-# sudo pacman -Syu
+echo -e "[${Green}STOWING_XDG_CONFIG${Color_Off}]"
+stow --verbose --target="$XDG_CONFIG_HOME" xdg
+
+echo -e "[${Green}UPDATING_SYSTEM${Color_Off}]"
+sudo pacman -Syu
 
 dependencies=(
 	"git"
@@ -23,51 +28,51 @@ dependencies=(
 	"fd"
 	"ttf-jetbrains-mono-nerd"
 )
-dependencies_names="${dependencies[@]}"
-echo "[INSTALLING_DEPENDENCIES]: $dependencies_names"
-# sudo pacman -Sy $dependencies_names
+dependencies_names="${dependencies[*]}"
+echo -e "[${Green}INSTALLING_DEPENDENCIES${Color_Off}]: $dependencies_names"
+sudo pacman -Sy "$dependencies_names"
 
 TMUX_TPM_PATH=$XDG_CONFIG_HOME/tmux_tpm
-echo "[DOWNLOAD_TMUX_DEPENDENCIES]: ${TMUX_TPM_PATH}"
-git clone https://github.com/tmux-plugins/tpm $TMUX_TPM_PATH
-$TMUX_TPM_PATH/scripts/install_plugins.sh
+echo -e "[${Green}DOWNLOAD_TMUX_DEPENDENCIES${Color_Off}]: $TMUX_TPM_PATH"
+git clone https://github.com/tmux-plugins/tpm "$TMUX_TPM_PATH"
+"$TMUX_TPM_PATH"/scripts/install_plugins.sh
 
 if ! command -v nvm &>/dev/null; then
-	echo "[INSTALLING_DEPENDENCIES]: nvm"
+	echo -e "[${Green}INSTALLING_DEPENDENCIES${Color_Off}]: nvm"
 	curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
 	nvm install --lts
 	nvm use --lts
 	npm install --global yarn
 else
-	echo "[DEPENDENCIES_INSTALLED]: nvm"
+	echo -e "[${Green}DEPENDENCIES_INSTALLED${Color_Off}]: nvm"
 fi
 
-git clone --depth 1 https://github.com/AstroNvim/AstroNvim $XDG_CONFIG_HOME/nvim
+git clone --depth 1 https://github.com/AstroNvim/AstroNvim "$XDG_CONFIG_HOME"/nvim
 nvim --headless -c 'quitall'
 
 # this always should be at the bottom because install script open new shell
 OMZ_PATH=$XDG_CONFIG_HOME/.oh-my-zsh
 if ! omz -v omz &>/dev/null; then
-	echo "[INSTALLING_DEPENDENCIES]: on-my-zsh"
-	rm -rf $OMZ_PATH
+	echo -e "[${Green}INSTALLING_DEPENDENCIES${Color_Off}]: on-my-zsh"
+	rm -rf "$OMZ_PATH"
 	sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 else
-	echo "[DEPENDENCIES_ALREADY_INSTALLED]: on-my-zsh"
+	echo -e "[${Green}DEPENDENCIES_ALREADY_INSTALLED${Color_Off}]: on-my-zsh"
 fi
 
 ZSH_PLUGINS_PATH=$OMZ_PATH/custom/plugins
-mkdir -p $ZSH_PLUGINS_PATH
-echo "[DOWNLOAD_ZSH_DEPENDENCIES]: ${ZSH_PLUGINS_PATH}"
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_PLUGINS_PATH}/zsh-autosuggestions
-git clone https://github.com/MichaelAquilina/zsh-you-should-use.git $ZSH_PLUGINS_PATH/zsh-you-should-use
-git clone https://github.com/jeffreytse/zsh-vi-mode $ZSH_PLUGINS_PATH/zsh-vi-mode
+mkdir -p "$ZSH_PLUGINS_PATH"
+echo -e "[${Green}DOWNLOAD_ZSH_DEPENDENCIES${Color_Off}]: ${ZSH_PLUGINS_PATH}"
+git clone https://github.com/zsh-users/zsh-autosuggestions "$ZSH_PLUGINS_PATH"/zsh-autosuggestions
+git clone https://github.com/MichaelAquilina/zsh-you-should-use.git "$ZSH_PLUGINS_PATH"/zsh-you-should-use
+git clone https://github.com/jeffreytse/zsh-vi-mode "$ZSH_PLUGINS_PATH"/zsh-vi-mode
 
-pushd stow
-echo "[LINKING_ZSHRC]"
-mkdir -p $XDG_CONFIG_HOME/zsh
-rm $XDG_CONFIG_HOME/zsh/.zshrc
+mkdir -p "$XDG_CONFIG_HOME"/zsh
+rm "$XDG_CONFIG_HOME"/zsh/.zshrc
+pushd shell || exit
+echo -e "[${Green}STOWING_ZSHRC${Color_Off}]"
 stow --verbose --target="$XDG_CONFIG_HOME"/zsh zsh
-popd
+popd || exit
 
-# pkill -USR1 kitty
-# zsh
+pkill -USR1 kitty
+zsh
