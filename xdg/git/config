@@ -19,7 +19,7 @@
 
 [core]
   pager = delta
-  excludesFile = ~/.gitignore
+  excludesFile = $HOME/xdg/config/git/ignore
 
 [delta]
   light = false
@@ -50,7 +50,9 @@
 [user]
 	email = guilherme.gg1@hotmail.com
 	name = guigallo
+
 [push]
 	autoSetupRemote = true
+
 [commit]
-	template = /home/guigallo/.gitmessage
+	template = $HOME/xdg/config/git/message

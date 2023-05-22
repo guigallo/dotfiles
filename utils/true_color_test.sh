@@ -10,6 +10,6 @@ awk 'BEGIN{
         printf "%s\033[0m", substr(s,colnum+1,1);
     }
     printf "\n";
-}';
+}'
 
-npx colortest
+npx -y colortest

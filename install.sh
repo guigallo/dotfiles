@@ -20,6 +20,7 @@ sudo pacman -Syu
 
 dependencies=(
 	"git"
+	"git-delta"
 	"stow"
 	"tmux"
 	"zsh"
@@ -34,7 +35,7 @@ sudo pacman -Sy "$dependencies_names"
 
 TMUX_TPM_PATH=$XDG_CONFIG_HOME/tmux_tpm
 echo -e "[${Green}DOWNLOAD_TMUX_DEPENDENCIES${Color_Off}]: $TMUX_TPM_PATH"
-git clone --depth=1 https://github.com/tmux-plugins/tpm "$TMUX_TPM_PATH"
+git clone -q --depth=1 https://github.com/tmux-plugins/tpm "$TMUX_TPM_PATH"
 "$TMUX_TPM_PATH"/scripts/install_plugins.sh
 
 if ! command -v nvm &>/dev/null; then
@@ -47,7 +48,7 @@ else
 	echo -e "[${Green}DEPENDENCIES_INSTALLED${Color_Off}]: nvm"
 fi
 
-git clone --depth=1 https://github.com/AstroNvim/AstroNvim "$XDG_CONFIG_HOME"/nvim
+git clone -q --depth=1 https://github.com/AstroNvim/AstroNvim "$XDG_CONFIG_HOME"/nvim
 nvim --headless -c 'quitall'
 
 # this always should be at the bottom because install script open new shell
@@ -63,11 +64,11 @@ fi
 ZSH_PLUGINS_PATH=$OMZ_PATH/custom/plugins
 mkdir -p "$ZSH_PLUGINS_PATH"
 echo -e "[${Green}DOWNLOAD_ZSH_DEPENDENCIES${Color_Off}]: ${ZSH_PLUGINS_PATH}"
-git clone --depth=1 https://github.com/zsh-users/zsh-autosuggestions "$ZSH_PLUGINS_PATH"/zsh-autosuggestions
-git clone --depth=1 https://github.com/MichaelAquilina/zsh-you-should-use.git "$ZSH_PLUGINS_PATH"/zsh-you-should-use
-git clone --depth=1 https://github.com/jeffreytse/zsh-vi-mode "$ZSH_PLUGINS_PATH"/zsh-vi-mode
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "$ZSH_PLUGINS_PATH"/powerlevel10k
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "$OMZ_PATH/custom/themes/powerlevel10k"
+git clone -q --depth=1 https://github.com/zsh-users/zsh-autosuggestions "$ZSH_PLUGINS_PATH"/zsh-autosuggestions
+git clone -q --depth=1 https://github.com/MichaelAquilina/zsh-you-should-use.git "$ZSH_PLUGINS_PATH"/zsh-you-should-use
+git clone -q --depth=1 https://github.com/jeffreytse/zsh-vi-mode "$ZSH_PLUGINS_PATH"/zsh-vi-mode
+git clone -q --depth=1 https://github.com/romkatv/powerlevel10k.git "$ZSH_PLUGINS_PATH"/powerlevel10k
+git clone -q --depth=1 https://github.com/romkatv/powerlevel10k.git "$OMZ_PATH/custom/themes/powerlevel10k"
 
 mkdir -p "$XDG_CONFIG_HOME"/zsh
 rm "$XDG_CONFIG_HOME"/zsh/.zshrc
