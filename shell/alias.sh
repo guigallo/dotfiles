@@ -31,4 +31,4 @@ alias t3='tree -a -L 3'
 
 # others
 alias i3=startx "$(which i3)"
-alias yarn=yarn --user-yarn "$XDG_CONFIG_HOME"/yarn/config
+alias yarn="yarn --user-yarnrc $XDG_CONFIG_HOME/yarn/config"

@@ -24,3 +24,6 @@ export EDITOR='nvim'
 export CHROME_EXECUTABLE=google-chrome-stable
 export LESS='-R --use-color -Dd+r$Du+b'
 export MANPAGER="less -R --use-color -Dd+r -Du+b"
+export LESSHISTFILE=$XDG_CACHE_HOME/less/history
+export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
+export XINITRC="$XDG_CONFIG_HOME"/X11/xinitrc
