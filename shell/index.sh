@@ -2,10 +2,15 @@
 
 # echo '[index.sh]'
 
-source "$HOME/dotfiles/shell/alias.sh"
-source "$HOME/dotfiles/shell/env.sh"
-source "$HOME/dotfiles/shell/dev.sh"
-source "$HOME/dotfiles/shell/theme.sh"
+DOTFILES_PATH="$HOME/dotfiles"
+
+source "$DOTFILES_PATH/shell/alias.sh"
+source "$DOTFILES_PATH/shell/env.sh"
+source "$DOTFILES_PATH/shell/dev.sh"
+source "$DOTFILES_PATH/shell/theme.sh"
+source "$DOTFILES_PATH/shell/functions.sh"
+
+export PATH="$PATH:$DOTFILES_PATH/shell/bin"
 
 if [ -n "$DOTFILES_INSTALLING" ] && [ "$DOTFILES_INSTALLING" = true ]; then
 	# installing only

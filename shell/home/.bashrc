@@ -8,7 +8,7 @@
 PS1='[\u@\h \W]\$ '
 
 # profile
-source ${HOME}/shell/index.sh
+source "$HOME/dotfiles/shell/index.sh"
 
 # zsh
 exec zsh
