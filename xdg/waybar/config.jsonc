@@ -1,0 +1,356 @@
+{
+  "layer": "top",
+  // "position": "bottom", // Waybar position (top|bottom|left|right)
+  // "height": 35, // Waybar height (to be removed for auto height)
+  // "width": 1280, // Waybar width
+  // "spacing": 4, // Gaps between modules (4px)
+  // "output": "DP-1",
+  
+  "modules-left": [
+    "custom/arch",
+    "keyboard-state",
+    "tray",
+    "wlr/workspaces",
+    "custom/cava",
+    "custom/media",
+    "custom/round-right",
+    "hyprland/window"
+    
+    // "custom/sep",
+    // "mpris", // show what's in playing
+    // "bluetooth"
+  ],
+  "modules-center": [
+    "custom/notification",
+    "custom/pacman",
+    "idle_inhibitor",
+    "hyprland/submap",
+    "clock",
+  ],
+  "modules-right": [
+    "cpu",
+    "memory",
+    "network",
+    "disk",
+    
+    "temperature",
+    "battery",
+    
+    "backlight",
+    "pulseaudio",
+  ],
+
+  // Modules configuration
+  
+  "wireplumber": {
+    "format": "{volume}% {icon}",
+    "format-muted": "",
+    "on-click": "helvum",
+    "format-icons": ["", "", ""]
+  },
+  
+  "battery": {
+    "states": {
+        // "good": 95,
+        "warning": 30,
+        "critical": 15
+    },
+    "format": "<span color=\"#89b4fa\">{icon} </span>{capacity}%",
+    "format-charging": "<span color=\"#89b4fa\">󰂄 </span>{capacity}%",
+    "format-plugged": "<span color=\"#89b4fa\">  </span>{capacity}%",
+    "format-alt": "<span color=\"#89b4fa\">󱧥 </span>{time}",
+    // "format-good": "", // An empty format will hide the module
+    // "format-full": "",
+    "format-icons": [" ", " ", " ", " ", " "],
+    "width-chars": 7,
+  },
+  
+  "clock": {
+    "format": "<span color=\"#89b4fa\">  </span>{:%H:%M}",
+    "format-alt": "<span color=\"#89b4fa\">  </span>{:%H:%M <span color=\"#89b4fa\">  </span>%d-%m-%Y}",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+    "interval": 1,
+    "calendar": {
+      "mode"          : "year",
+      "mode-mon-col"  : 3,
+      "weeks-pos"     : "right",
+      "on-scroll"     : 1,
+      "on-click-right": "mode",
+      "format": {
+        "months":     "<span color='#ffead3'><b>{}</b></span>",
+        "days":       "<span color='#ecc6d9'><b>{}</b></span>",
+        "weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
+        "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
+        "today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
+      }
+    },
+    "actions":  {
+      "on-click-right": "mode",
+      // "on-click-forward": "tz_up",
+      // "on-click-backward": "tz_down",
+      // "on-scroll-up": "shift_up",
+      // "on-scroll-down": "shift_down"
+    },
+  },
+  "cpu": {
+    "format": "<span color=\"#89b4fa\"> {icon} </span>{usage}% {avg_frequency:1.2f}GHz",
+    // "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"],
+    "tooltip": true,
+    "interval": 3,
+    "width-chars": 7,
+  },
+  
+  "memory": {
+    "format": "<span color=\"#89b4fa\"> </span> {percentage}%",
+    // "format": "<span color=\"#89b4fa\"> </span> {used:1.0f}Gb",
+    "tooltip-format": "Memory: {used:0.1f}G/{total:0.1f}G | Swap: {swapUsed:0.1f}G/{swapTotal:0.1f}G",
+    "interval": 3,
+    "width-chars": 7,
+  },
+
+  "temperature": {
+    // "thermal-zone": 2,
+    // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+    // "hwmon-path": "/tmp/nvidia-temp",
+    "critical-threshold": 80,
+    "format": "<span color=\"#89b4fa\">{icon}</span>{temperatureC}°C",
+    "interval": 3,
+    "format-icons": [" ", " ", " ", " ", " "],
+    "width-chars": 7,
+  },
+
+  "pulseaudio": {
+    "scroll-step": 5, // %, can be a float
+    "format": "<span color=\"#89b4fa\">{icon}</span>{volume}%",
+    "format-muted": "<span color=\"#f7768e\">󰖁 </span>Muted",
+    "format-icons": [" ", " ", " "],
+    "on-click": "pavucontrol"
+  },
+
+  "hyprland/window": {
+    "max-length": 30,
+    "format": "{}"
+  },
+
+  "custom/arch": {
+    "interval": "once",
+    "format": "󰣇"
+  },
+  
+  "custom/kernel": {
+    "exec": "uname -r | cut -d '-' -f1",
+    "interval": "once",
+    "format": "<span color=\"#89b4fa\"> </span>{}"
+  },
+  
+  "custom/pacman": {
+    "format": "<span color=\"#89b4fa\">{icon}</span>{}",
+    "return-type": "json",
+    "format-icons": {
+      "pending-updates": " ",
+      "updated": ""
+    },
+    "exec-if": "which waybar-updates",
+    "exec": "waybar-updates"
+  },
+
+  "custom/sep": {
+    "format": "|",
+    "interval": "once"
+  },
+  
+  "custom/round-left": {
+    "format": " ",
+    "interval": "once"
+  },
+  
+  "custom/round-right": {
+    "format": " ",
+    "interval": "once",
+    "max-length": 0,
+  },
+  
+  "tray": {
+    "icon-size": 18,
+    "spacing": 8
+  },
+  "wlr/workspaces": {
+    "disable-scroll": false,
+    "on-click": "activate",
+    "format": " {icon} ",
+    // "max-length": 20,
+    "format-icons": {
+      "1": "",
+      "2": "",
+      "3": "",
+      "8": "",
+      "9": "",
+      "urgent": "",
+      // "active": "",
+      "default": "",
+    },
+    "persistent_workspaces": {
+      "1": [],
+      "2": [],
+      "9": [],
+    },
+  },
+  "mpd": {
+    "format": "<span color=\"#89b4fa\">{stateIcon} </span>{artist} - {title}",
+    "format-disconnected": "Disconnected ",
+    "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
+    "format-paused": "",
+    "interval": 10,
+    "consume-icons": {
+      "on": " " // Icon shows only when "consume" is on
+    },
+    "random-icons": {
+      "off": "<span color=\"#f53c3c\"></span> ", // Icon grayed out when "random" is off
+      "on": " "
+    },
+    "repeat-icons": {
+      "on": " "
+    },
+    "single-icons": {
+      "on": "1 "
+    },
+    "state-icons": {
+      "paused": "",
+      "playing": ""
+    },
+    "tooltip-format": "MPD (connected)",
+    "tooltip-format-disconnected": "MPD (disconnected)"
+  },
+  
+  "custom/notification": {
+    "tooltip": false,
+    "format": "<span color=\"#89b4fa\">{icon}</span>",
+    "format-icons": {
+      "notification": "<span foreground='red'><sup></sup></span>",
+      "none": "",
+      "dnd-notification": "<span foreground='red'><sup></sup></span>",
+      "dnd-none": "",
+      "inhibited-notification": "<span foreground='red'><sup></sup></span>",
+      "inhibited-none": "",
+      "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
+      "dnd-inhibited-none": ""
+    },
+    "return-type": "json",
+    "exec-if": "which swaync-client",
+    "exec": "swaync-client -swb",
+    "on-click": "swaync-client -t -sw",
+    "on-click-right": "swaync-client -d -sw",
+    "escape": true
+  },
+  
+  "wlr/taskbar": {
+    "format": "{icon}",
+    "icon-theme": "Numix-Circle",
+    "tooltip-format": "{title}",
+    "on-click": "activate",
+    "on-click-middle": "close",
+    "ignore-list": [],
+    "app_ids-mapping": {
+      // "firefoxdeveloperedition": "firefox-developer-edition"
+    }
+  },
+  
+  // "cava": {
+  //   "cava_config": "$XDG_CONFIG_HOME/cava/config",
+  //   "framerate": 60,
+  //   "autosens": 1,
+  //   "sensitivity": 100,
+  //   "bars": 14,
+  //   "lower_cutoff_freq": 50,
+  //   "higher_cutoff_freq": 10000,
+  //   "method": "pulse",
+  //   "source": "auto",
+  //   "stereo": true,
+  //   "reverse": false,
+  //   "bar_delimiter": 0,
+  //   "monstercat": false,
+  //   "waves": false,
+  //   "noise_reduction": 0.77,
+  //   "input_delay": 2,
+  //   "format-icons" : ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█" ],
+  //   "actions": {
+  //     "on-click-right": "mode"
+  //   }
+  // },
+  
+  "network": {
+    // "interface": "wlp2s0",
+    "format": "{ifname}",
+    "format-wifi": "<span color=\"#89b4fa\">{icon}</span>{signalStrength}%",
+    "format-ethernet": "<span color=\"#89b4fa\">󰈀 </span>{ipaddr}/{cidr}",
+    "format-disconnected": "<span color=\"#f38ba8\">󰌙 </span> disconnected", //An empty format will hide the module.
+    "tooltip-format": "<span color=\"#89b4fa\"> </span>{ifname} via {gwaddr}",
+    "tooltip-format-wifi": "<span color=\"#89b4fa\">{icon}</span>{signalStrength}% {essid}",
+    "tooltip-format-ethernet": "<span color=\"#89b4fa\">󰈀 </span>{ifname}",
+    "tooltip-format-disconnected": "<span color=\"#f38ba8\">󰌙 </span> disconnected",
+    "format-icons": ["󰤯 ", "󰤟 ", "󰤢 ", "󰤥 ", "󰤨 "],
+    "max-length": 50
+  },
+  
+  "disk": {
+    "interval": 30,
+    "format": "<span color=\"#89b4fa\">  </span>{percentage_free}%",
+    "width-chars": 7,
+  },
+  
+  "keyboard-state": {
+    "numlock": true,
+    "capslock": true,
+    "format": "<span color=\"#89b4fa\">{icon}</span>{name} ",
+    // "format": {
+    //     "numlock": "N {icon}",
+    //     "capslock": "C {icon}"                                                                                                                                                       
+    // },
+    "format-icons": {
+        "locked": " ",
+        "unlocked": " "
+    }
+  },
+  
+  "idle_inhibitor": {
+    "format": "<span color=\"#89b4fa\">{icon}</span>",
+    "format-icons": {
+      "activated": " ",
+      "deactivated": " "
+    }
+  },
+  
+  "backlight": {
+      // "device": "acpi_video1",
+    "format": "<span color=\"#89b4fa\">{icon}</span>{percent}%",
+    "tooltip-format": "Backlight: {percent}%",
+    "format-icons": [" ", " ", " ", " ", " ", " ", " ", " ", " "]
+  },
+  
+  "custom/cava": {
+    "tooltip": false,
+    "exec": "$XDG_CONFIG_HOME/waybar/scripts/cava.sh",
+    "format": "<span color=\"#89b4fa\">{}</span>",
+  },
+  
+  "custom/media": {
+    "escape": true,
+    "return-type": "json",
+    "max-length": 25,
+    "on-click": "playerctl play-pause",
+    "on-click-right": "playerctld shift; dbus-send --type=signal / org.waybar.Player.Shift",
+    // "on-click-right": "playerctl stop",
+    "smooth-scrolling-threshold": 10, // This value was tested using a trackpad, it should be lowered if using a mouse.
+    "exec": "$XDG_CONFIG_HOME/waybar/scripts/mediaplayer.py 2> /dev/null", // Script in resources/custom_modules folder
+    "format": "<span color=\"#89b4fa\">{icon} </span>{}",
+    "format-icons": {
+      "paused": " ",
+      "firefox": " ",
+      "chromium": " ",
+      "tdesktop": " ",
+      "spotify": " ",
+      "vlc": "󰕼 "
+    },
+  }
+}
+

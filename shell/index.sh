@@ -4,8 +4,8 @@
 
 DOTFILES_PATH="$HOME/dotfiles"
 
-source "$DOTFILES_PATH/shell/alias.sh"
 source "$DOTFILES_PATH/shell/env.sh"
+source "$DOTFILES_PATH/shell/alias.sh"
 source "$DOTFILES_PATH/shell/dev.sh"
 source "$DOTFILES_PATH/shell/theme.sh"
 source "$DOTFILES_PATH/shell/functions.sh"

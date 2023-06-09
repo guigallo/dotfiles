@@ -1,0 +1,146 @@
+@import "catppuccin-mocha.css";
+
+* {
+  font-family: JetBrainsMono Nerd Font, FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  font-size: 14px;
+  color: @text;
+}
+
+window#waybar {
+  /* background: alpha(@base, 0.1); */
+  background-color: transparent;
+}
+
+/* Set background colour of tooltips */
+tooltip {
+  background: alpha(@mantle, 0.8);
+}
+
+/* Set workspace text colour and padding */
+#workspaces button {
+  padding: 0px 8px 0px 4px;
+  color: #c0caf5;
+}
+
+/* Sets active workspace to have a solid line on the bottom */
+#workspaces button.active {
+  border-bottom: 2px solid @blue;
+  border-radius: 0px;
+  margin-bottom: 0px;
+}
+
+#workspaces button.active label {
+  color: @blue;
+}
+
+#workspaces button.urgent {
+  color: #f7768e;
+}
+
+#workspaces button:hover {
+  background: #11111b;
+  color: #cdd6f4;
+}
+
+#custom-arch {
+  margin: 0 8px 0 6px;
+  padding: 0;
+  font-size: 25px;
+  color: @blue;
+}
+
+/* sets background, padding, margins, and borders for (all) modules */
+#backlight,
+#battery,
+#clock,
+#cpu,
+#custom-cava,
+#custom-kernel,
+.custom-media-enabled,
+#custom-notification,
+#custom-pacman,
+#custom-round-left,
+#custom-round-right,
+#disk,
+#idle_inhibitor,
+#keyboard-state label.locked,
+#memory,
+#mpd,
+#network,
+#pulseaudio,
+#submap,
+#temperature,
+#tray,
+#window,
+#workspaces {
+  background: @base;
+  padding: 0px 10px;
+  margin: 3px 0px;
+  border: 0px;
+}
+
+/* set up rounding to make these modules look like seperate pills */
+#clock,
+#keyboard-state,
+#submap,
+#tray,
+#window,
+#workspaces {
+  border-radius: 16px 16px 16px 16px;
+  margin-left: 4px;
+  margin-right: 4px;
+}
+
+/* rounding only on left of modules */
+#backlight,
+#custom-cava,
+#custom-round-left,
+#cpu,
+#custom-notification,
+#temperature {
+  border-radius: 16px 0px 0px 16px;
+  margin-left: 4px;
+}
+
+/* rounding only on right of modules */
+#battery,
+#custom-round-right,
+#idle_inhibitor,
+#disk,
+#pulseaudio
+{
+  border-radius: 0px 16px 16px 0px;
+  margin-right: 4px;
+}
+
+#custom-round-right {
+  padding: 3px;
+}
+
+/* keyboard-state */
+#keyboard-state {
+  margin: 0;
+  padding: 0;
+}
+
+#keyboard-state label {
+  font-size: 0;
+  margin: 0;
+  padding: 0;
+}
+
+#keyboard-state label.locked {
+  margin: 4px;
+  font-size: initial;
+  padding-right: 0px;
+  border-radius: 16px;
+}
+
+/* media */
+.custom-media-disabled {
+  font-size: 0;
+  margin: 0;
+  padding: 0;
+}
