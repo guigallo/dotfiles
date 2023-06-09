@@ -35,3 +35,4 @@ alias t3='tree -a -L 3'
 alias yarnold="$(which yarn)"
 alias yarnglobal="$(which yarn) global --user-yarnrc $XDG_CONFIG_HOME/yarn/config"
 alias yarn="yarn --user-yarnrc $XDG_CONFIG_HOME/yarn/config"
+alias Hyprland="Hyprland -c $XDG_CONFIG_HOME/hypr/hyprland.conf"
