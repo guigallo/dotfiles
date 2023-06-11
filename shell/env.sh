@@ -27,3 +27,7 @@ export MANPAGER="less -R --use-color -Dd+r -Du+b"
 export LESSHISTFILE=$XDG_CACHE_HOME/less/history
 export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
 export XINITRC="$XDG_CONFIG_HOME"/X11/xinitrc
+
+# others
+export RANGER_LOAD_DEFAULT_RC=false
+export PATH=$PATH:/usr/lib/w3m

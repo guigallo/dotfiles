@@ -20,6 +20,11 @@ export GITHUB_TOKEN=""
 # export PATH=$PATH:$ANDROID_HOME/platform-tools
 # export ANDROID_AVD_HOME=$HOME/.android/avd
 
+# others
+export CARGO_HOME="$XDG_DATA_HOME/CARGO"
+export GOPATH="$XDG_DATA_HOME/go"
+export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
+
 # nvm
 export NVM_DIR="$HOME/xdg/config/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
