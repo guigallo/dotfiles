@@ -133,3 +133,4 @@ fpath=($fpath "/home/guigallo/xdg/config/zsh/.zfunctions")
 
 # To customize prompt, run `p10k configure` or edit ~/xdg/config/zsh/.p10k.zsh.
 [[ ! -f ~/xdg/config/zsh/.p10k.zsh ]] || source ~/xdg/config/zsh/.p10k.zsh
+
