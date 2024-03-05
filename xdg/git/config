@@ -1,0 +1,58 @@
+[alias]
+	root = rev-parse --show-toplevel
+  graph = log --all --oneline --graph --decorate
+	lg = log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr %an)%Creset' --abbrev-commit --date=relative
+	logg = log --pretty=fuller
+	tree = !git lg --graph
+	unstage = reset HEAD
+	last = log -1 HEAD
+	st = status
+	uncommit = reset --soft HEAD^
+	progress = diff --stat
+	pg = diff --shortstat
+
+[code]
+	editor = nvim
+
+[color]
+	ui = auto
+
+[core]
+  pager = delta
+  excludesFile = $HOME/xdg/config/git/ignore
+
+[delta]
+  light = false
+  line-numbers = true
+  navigate = true # use n and N to move between diff sections
+
+[diff]
+  colorMoved = default
+
+[fetch]
+	prune = true
+
+[init]
+	defaultBranch = main
+
+[interactive]
+  diffFilter = delta --color-only
+
+[merge]
+  conflictstyle = merge
+
+[pull]
+	rebase = true
+
+[safe]
+	directory = /opt/flutter
+
+[user]
+	email = guilherme.gg1@hotmail.com
+	name = guigallo
+
+[push]
+	autoSetupRemote = true
+
+[commit]
+	template = $HOME/xdg/config/git/message

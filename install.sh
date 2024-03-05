@@ -1,25 +1,81 @@
-#!/bin/zsh
+#!/bin/bash
 
-if [[ -z $STOW_FOLDERS ]]; then
-  STOW_FOLDERS="bash,dunst,git,i3,npm,nvim,ranger,rofi,Xresources,zsh,tmux,alacritty,polybar,picom"
+Green='\033[0;32m'
+Color_Off='\033[0m'
+
+export DOTFILES_INSTALLING=true
+
+source "$HOME/dotfiles/shell/env.sh"
+
+pushd shell || exit
+echo -e "[${Green}STOWING_DOTFILES${Color_Off}]"
+stow --verbose --target="$HOME" home
+popd || exit
+
+echo -e "[${Green}STOWING_XDG_CONFIG${Color_Off}]"
+stow --verbose --target="$XDG_CONFIG_HOME" xdg
+
+echo -e "[${Green}UPDATING_SYSTEM${Color_Off}]"
+sudo pacman -Syu
+
+dependencies=(
+	"git"
+	"git-delta"
+	"stow"
+	"tmux"
+	"zsh"
+	"tldr"
+	"fzf"
+	"fd"
+	"ttf-jetbrains-mono-nerd"
+	"tree"
+)
+dependencies_names="${dependencies[*]}"
+echo -e "[${Green}INSTALLING_DEPENDENCIES${Color_Off}]: $dependencies_names"
+sudo pacman -Sy "$dependencies_names"
+
+TMUX_TPM_PATH=$XDG_CONFIG_HOME/tmux_tpm
+echo -e "[${Green}DOWNLOAD_TMUX_DEPENDENCIES${Color_Off}]: $TMUX_TPM_PATH"
+git clone -q --depth=1 https://github.com/tmux-plugins/tpm "$TMUX_TPM_PATH"
+"$TMUX_TPM_PATH"/scripts/install_plugins.sh
+
+if ! command -v nvm &>/dev/null; then
+	echo -e "[${Green}INSTALLING_DEPENDENCIES${Color_Off}]: nvm"
+	curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+	nvm install --lts
+	nvm use --lts
+	npm install --global yarn
+else
+	echo -e "[${Green}DEPENDENCIES_INSTALLED${Color_Off}]: nvm"
 fi
 
-if [[ -z $DOTFILES ]]; then
-  DOTFILES=$HOME/git/dotfiles
+git clone -q --depth=1 https://github.com/AstroNvim/AstroNvim "$XDG_CONFIG_HOME"/nvim
+nvim --headless -c 'quitall'
+
+# this always should be at the bottom because install script open new shell
+OMZ_PATH=$XDG_CONFIG_HOME/.oh-my-zsh
+if ! omz -v omz &>/dev/null; then
+	echo -e "[${Green}INSTALLING_DEPENDENCIES${Color_Off}]: on-my-zsh"
+	rm -rf "$OMZ_PATH"
+	sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+else
+	echo -e "[${Green}DEPENDENCIES_ALREADY_INSTALLED${Color_Off}]: on-my-zsh"
 fi
-echo $foldern
 
-pushd $DOTFILES
-for folder in $(echo $STOW_FOLDERS | sed "s/,/ /g")
-do
-  echo $folder
-  stow --adopt -Svt ~ $folder
-done
-popd
+ZSH_PLUGINS_PATH=$OMZ_PATH/custom/plugins
+mkdir -p "$ZSH_PLUGINS_PATH"
+echo -e "[${Green}DOWNLOAD_ZSH_DEPENDENCIES${Color_Off}]: ${ZSH_PLUGINS_PATH}"
+git clone -q --depth=1 https://github.com/zsh-users/zsh-autosuggestions "$ZSH_PLUGINS_PATH"/zsh-autosuggestions
+git clone -q --depth=1 https://github.com/MichaelAquilina/zsh-you-should-use.git "$ZSH_PLUGINS_PATH"/zsh-you-should-use
+git clone -q --depth=1 https://github.com/jeffreytse/zsh-vi-mode "$ZSH_PLUGINS_PATH"/zsh-vi-mode
+git clone -q --depth=1 https://github.com/romkatv/powerlevel10k.git "$OMZ_PATH/custom/themes/powerlevel10k"
 
-source ~/.zshrc
+mkdir -p "$XDG_CONFIG_HOME"/zsh
+rm "$XDG_CONFIG_HOME"/zsh/.zshrc
+pushd shell || exit
+echo -e "[${Green}STOWING_ZSHRC${Color_Off}]"
+stow --verbose --target="$XDG_CONFIG_HOME"/zsh zsh
+popd || exit
 
-echo 'installing zsh dependencies'
-git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
-git clone https://github.com/supercrabtree/k $ZSH_CUSTOM/plugins/k
+pkill -USR1 kitty
+zsh
