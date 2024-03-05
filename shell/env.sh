@@ -31,3 +31,7 @@ export XINITRC="$XDG_CONFIG_HOME"/X11/xinitrc
 # others
 export RANGER_LOAD_DEFAULT_RC=false
 export PATH=$PATH:/usr/lib/w3m
+
+# locale
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8

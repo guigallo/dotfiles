@@ -15,3 +15,12 @@ function hlbinds() {
 function hllog() {
 	watch -n 0.1 "grep -v \"arranged\" /tmp/hypr/$HYPRLAND_INSTANCE_SIGNATURE/hyprland.log | tail -n 49"
 }
+
+function ya() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXX")"
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}

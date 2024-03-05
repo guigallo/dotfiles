@@ -18,8 +18,8 @@ alias td='todo.sh'
 alias oldls='/usr/bin/ls'
 alias ka='k -Ah'
 alias ls='ls -lhF'
-alias l='ls -la'
 alias ll='exa --long'
+alias l='ll -la'
 
 # colors
 alias ls='ls --color=auto'
@@ -32,7 +32,12 @@ alias t2='tree -a -L 2'
 alias t3='tree -a -L 3'
 
 # others
-alias yarnold="$(which yarn)"
-alias yarnglobal="$(which yarn) global --user-yarnrc $XDG_CONFIG_HOME/yarn/config"
-alias yarn="yarn --user-yarnrc $XDG_CONFIG_HOME/yarn/config"
+# alias yarnold="$(which yarn)"
+# alias yarnglobal="$(which yarn) global --user-yarnrc $XDG_CONFIG_HOME/yarn/config"
+# alias yarn="yarn --user-yarnrc $XDG_CONFIG_HOME/yarn/config"
 alias Hyprland="Hyprland -c $XDG_CONFIG_HOME/hypr/hyprland.conf"
+
+# global aliases
+alias -g M='|more'
+alias -g H='|head'
+alias -g T='|tail'

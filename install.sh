@@ -28,6 +28,7 @@ dependencies=(
 	"fzf"
 	"fd"
 	"ttf-jetbrains-mono-nerd"
+	"tree"
 )
 dependencies_names="${dependencies[*]}"
 echo -e "[${Green}INSTALLING_DEPENDENCIES${Color_Off}]: $dependencies_names"
@@ -67,7 +68,6 @@ echo -e "[${Green}DOWNLOAD_ZSH_DEPENDENCIES${Color_Off}]: ${ZSH_PLUGINS_PATH}"
 git clone -q --depth=1 https://github.com/zsh-users/zsh-autosuggestions "$ZSH_PLUGINS_PATH"/zsh-autosuggestions
 git clone -q --depth=1 https://github.com/MichaelAquilina/zsh-you-should-use.git "$ZSH_PLUGINS_PATH"/zsh-you-should-use
 git clone -q --depth=1 https://github.com/jeffreytse/zsh-vi-mode "$ZSH_PLUGINS_PATH"/zsh-vi-mode
-git clone -q --depth=1 https://github.com/romkatv/powerlevel10k.git "$ZSH_PLUGINS_PATH"/powerlevel10k
 git clone -q --depth=1 https://github.com/romkatv/powerlevel10k.git "$OMZ_PATH/custom/themes/powerlevel10k"
 
 mkdir -p "$XDG_CONFIG_HOME"/zsh

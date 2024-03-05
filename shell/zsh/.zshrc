@@ -1,4 +1,4 @@
-# echo '[.zshrc]'
+echo '[.zshrc]'
  
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/xdg/config/zsh/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
@@ -128,9 +128,9 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-source $HOME/dotfiles/shell/index.sh
 fpath=($fpath "/home/guigallo/xdg/config/zsh/.zfunctions")
 
 # To customize prompt, run `p10k configure` or edit ~/xdg/config/zsh/.p10k.zsh.
 [[ ! -f ~/xdg/config/zsh/.p10k.zsh ]] || source ~/xdg/config/zsh/.p10k.zsh
 
+source $HOME/dotfiles/shell/index.sh
